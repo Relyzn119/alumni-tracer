@@ -134,19 +134,19 @@
                                     </tr>
                                     <tr>
                                         <th>Dosen Pembimbing 1</th>
-                                        <td>{{ $item->dosenpembimbing1->nama }}</td>
+                                        <td>{{ $item->dosenpembimbing1?->nama ?? '-' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Dosen Pembimbing 2</th>
-                                        <td>{{ $item->dosenpembimbing2->nama }}</td>
+                                        <td>{{ $item->dosenpembimbing2?->nama ?? '-' }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Dosen Penguji 1</th>
-                                        <td>{{ $item->dosenpenguji1->nama }}</td>
+                                        <td>{{ $item->dosenpenguji1?->nama ?? '-' }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Dosen Penguji 2</th>
-                                        <td>{{ $item->dosenpenguji2->nama }}</td>
+                                        <td>{{ $item->dosenpenguji2?->nama ?? '-' }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">IPK</th>

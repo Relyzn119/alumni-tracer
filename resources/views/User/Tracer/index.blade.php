@@ -1,4 +1,4 @@
-@extends('Partials.person')
+@extends('Partials.Person')
 
 @section('title', 'Form Kuesioner Tracer Study')
 

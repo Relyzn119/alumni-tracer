@@ -121,7 +121,20 @@ class RegisAlumniController extends Controller
             "yudisium" => $request->yudisium,
             "thn_lulus" => $request->yudisium ? \Carbon\Carbon::parse($request->yudisium)->format('Y') : null,
             "tempat_lhr" => $request->tempat_lhr,
-
+            "tanggal_lhr" => $request->tanggal_lhr,
+            "judul" => $request->judul,
+            "nik" => $request->nik,
+            "ayah" => $request->ayah,
+            "ibu" => $request->ibu,
+            "penguji1" => $request->penguji1,
+            "penguji2" => $request->penguji2,
+            "pembimbing1" => $request->pembimbing1,
+            "pembimbing2" => $request->pembimbing2,
+            "provinsi" => $request->provinsi,
+            "kota" => $request->kota,
+            "kecamatan" => $request->kecamatan,
+            "kelurahan" => $request->kelurahan,
+            "gender" => $request->gender,
         ]);
         // Handle file upload for 'file'
         if ($request->hasFile('file')) {
