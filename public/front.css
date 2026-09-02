@@ -1,0 +1,37 @@
+.hero {
+    position: relative;
+    background-size: cover;
+    height: 100vh;
+    background: linear-gradient(135deg, #4a90e2, #0052cc);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.teks {
+    text-align: justify;
+}
+body {
+    font-family: "Work Sans", sans-serif;
+}
+footer {
+    width: 100%;
+    bottom: 0;
+    background: linear-gradient(135deg, #4a90e2, #0052cc);
+    background-size: 100% 100%;
+    text-align: justify;
+}
+.i {
+    color: black;
+    list-style-type: none;
+}
+
+.icons {
+    list-style-type: none;
+}
