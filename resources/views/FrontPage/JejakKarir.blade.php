@@ -1,91 +1,97 @@
 @extends('Partials.Frontpage')
-
 @section('title', 'Jejak Karir Alumni')
-
 @section('content')
-<section>
-    <div class="container py-4 min-vh-100">
+<section class="py-12 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        
+        <!-- Header -->
+        <div class="mb-8 io">
+            <span class="text-xs font-mono text-action uppercase tracking-widest block mb-2">TELEMETRY // ALUMNI CAREER TRACKING</span>
+            <h2 class="text-3xl sm:text-5xl font-anybody font-extrabold uppercase text-snow">JEJAK KARIR ALUMNI</h2>
+            <p class="text-sm text-snow/70 font-archivo mt-2">Daftar rekam jejak karir profesional lulusan Universitas Methodist Indonesia di industri nasional dan internasional.</p>
+        </div>
+
         <!-- Search Container -->
-        <div class="bg-white rounded-3 shadow-sm p-4 mb-4">
+        <div class="bg-surface border border-line p-6 mb-8 io shadow-2xl">
             <form action="{{ route('jejak-karir.index') }}" method="get">
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <span class="input-group-text bg-light border-end-0">
-                                <i class="fas fa-search text-muted"></i>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                    <div class="md:col-span-6">
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-snow/40">
+                                <i class="fas fa-search"></i>
                             </span>
                             <input type="text" name="search" value="{{ request('search') }}"
-                                class="form-control bg-light border-start-0"
+                                class="w-full bg-ground border border-line text-snow placeholder-snow/40 font-mono text-xs pl-10 pr-4 py-3 focus:outline-none focus:border-action transition-colors"
                                 placeholder="Cari jejak karir berdasarkan nama atau NPM...">
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <select class="form-select bg-light" name="prodi">
+                    <div class="md:col-span-4">
+                        <select name="prodi" class="w-full bg-ground border border-line text-snow font-mono text-xs px-4 py-3 focus:outline-none focus:border-action transition-colors">
                             <option value="">Semua Program Studi</option>
                             @foreach ($prodi as $item)
-                            <option value="{{ $item->id }}"
-                                {{ request('prodi') == $item->id ? 'selected' : '' }}>
+                            <option value="{{ $item->id }}" {{ request('prodi') == $item->id ? 'selected' : '' }}>
                                 {{ $item->prodi }}
                             </option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-primary w-100" type="submit">
-                            <i class="fa-solid fa-magnifying-glass me-1"></i> Cari
+                    <div class="md:col-span-2">
+                        <button class="w-full bg-action text-white font-anybody font-bold text-xs uppercase py-3 hover:bg-action/90 transition-colors" type="submit">
+                            <i class="fa-solid fa-magnifying-glass me-1"></i> CARI KARIR
                         </button>
                     </div>
                 </div>
             </form>
         </div>
 
-        <!-- Alumni Career Cards -->
-        <div class="row g-4 mb-5">
+        <!-- Alumni Career Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 io">
             @forelse ($datas as $item)
             @php
-            // Ambil karir saat ini / terbaru dari alumni
             $currentCareer = \App\Models\AlumniCareer::where('alumni_id', $item->id)->where('is_current', true)->first();
             $allCareers = \App\Models\AlumniCareer::where('alumni_id', $item->id)->orderBy('tahun_mulai', 'desc')->get();
             @endphp
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="position-relative">
-                        <img src="{{ asset('images/alumni/' . ($item->file ?? 'default.png')) }}"
-                            width="400" height="280" class="card-img-top object-fit-cover" alt="Foto Alumni">
-                        <span class="badge bg-success position-absolute top-0 end-0 m-3 px-3 py-2 shadow-sm">
-                            Verified Tracer
+            <div class="bg-surface border border-line overflow-hidden hover:border-action transition-all group flex flex-col justify-between">
+                <div>
+                    <div class="relative h-56 w-full overflow-hidden bg-ground">
+                        <img src="{{ asset('images/alumni/' . ($item->file ?? 'default.png')) }}" 
+                             alt="{{ $item->nama }}" 
+                             class="w-full h-full object-cover plate-filter group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 px-2.5 py-1 bg-action/20 text-action font-mono text-[10px] border border-action/30 uppercase tnum">
+                            VERIFIED TRACER
                         </span>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold text-primary mb-1">{{ $item->nama }}</h5>
-                        <p class="card-text text-muted mb-2 small">
-                            <i class="fa-solid fa-graduation-cap me-1"></i> {{ $item->prodis->prodi ?? '-' }} ({{ $item->fakultas }})
-                        </p>
 
-                        <hr class="my-3">
+                    <div class="p-6">
+                        <h4 class="font-anybody font-bold text-xl uppercase text-snow mb-1 group-hover:text-action transition-colors">
+                            {{ $item->nama }}
+                        </h4>
+                        <div class="font-mono text-xs text-snow/60 mb-4">
+                            <i class="fa-solid fa-graduation-cap text-action me-1"></i> {{ $item->prodis->prodi ?? '-' }} ({{ $item->fakultas }})
+                        </div>
 
-                        <!-- Karir Saat Ini -->
-                        <div class="mb-3">
-                            <small class="text-uppercase text-muted fw-bold d-block mb-1">Pekerjaan Saat Ini</small>
+                        <div class="border-t border-line pt-4 mb-4">
+                            <span class="font-mono text-[10px] text-action uppercase tracking-widest block mb-1">PEKERJAAN SAAT INI</span>
                             @if($currentCareer)
-                            <div class="fw-bold text-dark fs-6">{{ $currentCareer->perusahaan }}</div>
-                            <small class="text-secondary d-block">{{ $currentCareer->posisi_jabatan ?? 'Staf / Karyawan' }}</small>
-                            <small class="badge bg-light text-dark mt-1 border"><i class="fa-solid fa-location-dot me-1"></i> {{ $currentCareer->lokasi ?? 'Indonesia' }}</small>
+                                <div class="font-anybody font-bold text-base text-snow uppercase">{{ $currentCareer->perusahaan }}</div>
+                                <div class="font-mono text-xs text-snow/70">{{ $currentCareer->posisi_jabatan ?? 'Staf / Karyawan' }}</div>
+                                <div class="mt-2 inline-block px-2 py-0.5 bg-surface-elevated border border-line font-mono text-[10px] text-snow/80">
+                                    <i class="fa-solid fa-location-dot me-1 text-action"></i> {{ $currentCareer->lokasi ?? 'Indonesia' }}
+                                </div>
                             @else
-                            <span class="text-muted fst-italic">Belum ada data pekerjaan aktif</span>
+                                <span class="font-mono text-xs text-snow/40 italic">Belum ada data pekerjaan aktif</span>
                             @endif
                         </div>
 
-                        <!-- Riwayat Karir Sebelumnya -->
                         @if($allCareers->count() > 1)
-                        <div>
-                            <small class="text-uppercase text-muted fw-bold d-block mb-1">Riwayat Karir Sebelumnya</small>
-                            <ul class="list-unstyled mb-0 small text-secondary">
+                        <div class="border-t border-line pt-3">
+                            <span class="font-mono text-[10px] text-snow/50 uppercase tracking-widest block mb-1">RIWAYAT KARIR LAINNYA</span>
+                            <ul class="space-y-1 p-0 m-0 list-none font-mono text-xs text-snow/70">
                                 @foreach($allCareers->where('is_current', false)->take(2) as $oldCareer)
-                                <li class="mb-1">
-                                    <i class="fa-solid fa-building me-1 text-muted"></i> {{ $oldCareer->perusahaan }}
+                                <li class="truncate">
+                                    <i class="fa-solid fa-building me-1 text-action/60"></i> {{ $oldCareer->perusahaan }}
                                     @if($oldCareer->tahun_mulai)
-                                    <span class="text-muted">({{ $oldCareer->tahun_mulai }})</span>
+                                    <span class="text-snow/40 tnum">({{ $oldCareer->tahun_mulai }})</span>
                                     @endif
                                 </li>
                                 @endforeach
@@ -93,33 +99,34 @@
                         </div>
                         @endif
                     </div>
-                    <div class="card-footer bg-light border-0 py-3">
-                        <div class="row text-center">
-                            <div class="col-6 border-end">
-                                <div class="fw-bold text-dark">
-                                    {{ $item->thn_lulus ?? ($item->yudisium ? \Carbon\Carbon::parse($item->yudisium)->format('Y') : '-') }}
-                                </div>
-                                <small class="text-muted">Tahun Lulus</small>
+                </div>
+
+                <div class="p-6 pt-0 border-t border-line mt-4">
+                    <div class="grid grid-cols-2 gap-2 font-mono text-xs pt-4 text-center">
+                        <div class="border-r border-line pr-2">
+                            <div class="text-snow font-bold tnum">
+                                {{ $item->thn_lulus ?? ($item->yudisium ? \Carbon\Carbon::parse($item->yudisium)->format('Y') : '-') }}
                             </div>
-                            <div class="col-6">
-                                <div class="fw-bold text-dark">{{ $allCareers->count() }} Perusahaan</div>
-                                <small class="text-muted">Total Karir</small>
-                            </div>
+                            <div class="text-snow/40 text-[10px]">TAHUN LULUS</div>
+                        </div>
+                        <div class="pl-2">
+                            <div class="text-action font-bold tnum">{{ $allCareers->count() }} PERUSAHAAN</div>
+                            <div class="text-snow/40 text-[10px]">TOTAL KARIR</div>
                         </div>
                     </div>
                 </div>
             </div>
             @empty
-            <div class="col-12 text-center py-5">
-                <i class="fa-solid fa-user-slash text-muted fs-1 mb-3"></i>
-                <h4 class="text-muted">Belum ada data Jejak Karir Alumni yang ditemukan.</h4>
+            <div class="col-span-3 bg-surface border border-line p-12 text-center font-mono text-xs text-snow/50">
+                <i class="fa-solid fa-user-slash text-2xl text-snow/30 mb-3 block"></i>
+                BELUM ADA DATA JEJAK KARIR ALUMNI YANG DITEMUKAN
             </div>
             @endforelse
+        </div>
 
-            <!-- Pagination -->
-            <div class="d-flex justify-content-center mt-4">
-                {{ $datas->links('pagination::bootstrap-5') }}
-            </div>
+        <!-- Pagination -->
+        <div class="flex justify-center io">
+            {{ $datas->links('pagination::bootstrap-5') }}
         </div>
     </div>
 </section>

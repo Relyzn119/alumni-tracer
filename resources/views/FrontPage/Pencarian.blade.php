@@ -1,103 +1,101 @@
 @extends('Partials.Frontpage')
-@section('title', 'Pencarian')
+@section('title', 'Data Alumni')
 @section('content')
-<section>
-    <div class="container py-4 min-vh-100">
+<section class="py-12 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        
+        <!-- Header -->
+        <div class="mb-8 io">
+            <span class="text-xs font-mono text-action uppercase tracking-widest block mb-2">DIRECTORY // DATABASE ALUMNI</span>
+            <h2 class="text-3xl sm:text-5xl font-anybody font-extrabold uppercase text-snow">PENCARIAN DATA ALUMNI</h2>
+            <p class="text-sm text-snow/70 font-archivo mt-2">Cari data rekam jejak lulusan Universitas Methodist Indonesia berdasarkan Nama, NPM, atau Program Studi.</p>
+        </div>
+
         <!-- Search Container -->
-        <div class="bg-white rounded-3 shadow-sm p-4 mb-4">
-            <!-- Search Form -->
+        <div class="bg-surface border border-line p-6 mb-8 io shadow-2xl">
             <form action="{{ route('pencarian') }}" method="get">
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <span class="input-group-text bg-light border-end-0">
-                                <i class="fas fa-search text-muted"></i>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                    <div class="md:col-span-6">
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-snow/40">
+                                <i class="fas fa-search"></i>
                             </span>
                             <input type="text" name="search" value="{{ request('search') }}"
-                                class="form-control bg-light border-start-0"
-                                placeholder="Cari berdasarkan nama atau NPM...">
+                                class="w-full bg-ground border border-line text-snow placeholder-snow/40 font-mono text-xs pl-10 pr-4 py-3 focus:outline-none focus:border-action transition-colors"
+                                placeholder="Cari berdasarkan nama atau NPM alumni...">
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <select class="form-select bg-light" name="prodi">
-                            <option value="">Program Studi</option>
+                    <div class="md:col-span-4">
+                        <select name="prodi" class="w-full bg-ground border border-line text-snow font-mono text-xs px-4 py-3 focus:outline-none focus:border-action transition-colors">
+                            <option value="">Semua Program Studi</option>
                             @foreach ($prodi as $item)
-                            <option value="{{ $item->id }}"
-                                {{ request('prodi') == $item->id ? 'selected' : '' }}>
+                            <option value="{{ $item->id }}" {{ request('prodi') == $item->id ? 'selected' : '' }}>
                                 {{ $item->prodi }}
                             </option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-primary w-100" type="submit">
-                            Cari
+                    <div class="md:col-span-2">
+                        <button class="w-full bg-action text-white font-anybody font-bold text-xs uppercase py-3 hover:bg-action/90 transition-colors" type="submit">
+                            <i class="fa-solid fa-magnifying-glass me-1"></i> CARI DATA
                         </button>
                     </div>
                 </div>
             </form>
         </div>
 
-        <!-- Alumni Cards -->
-        <div class="row g-4 mb-5">
+        <!-- Alumni Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 io">
             @forelse ($datas as $item)
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm h-100">
-                    <img src="{{ asset('images/alumni/' . $item->file) }}" width="400" height="400"
-                        class="object-fit-cover" alt="Alumni" class="card-img-top">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-start mb-3">
-                            <div>
-                                <h5 class="card-title">{{ $item->nama }}</h5>
-                                <p class="card-text text-muted mb-0">{{ $item->prodis->prodi }}</p>
-                                <small class="text-muted">{{ $item->fakultas }}</small>
-                            </div>
-                            <span class="badge bg-primary rounded-pill px-3">2021</span>
+            <div class="bg-surface border border-line overflow-hidden hover:border-action transition-all group flex flex-col justify-between">
+                <div>
+                    <div class="relative h-64 w-full overflow-hidden bg-ground">
+                        <img src="{{ asset('images/alumni/' . ($item->file ?? 'default.png')) }}" 
+                             alt="{{ $item->nama }}" 
+                             class="w-full h-full object-cover plate-filter group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 px-2.5 py-1 bg-action/20 text-action font-mono text-[10px] border border-action/30 uppercase tnum">
+                            LULUS: {{ $item->thn_lulus ?? ($item->yudisium ? \Carbon\Carbon::parse($item->yudisium)->format('Y') : '-') }}
+                        </span>
+                    </div>
+
+                    <div class="p-6">
+                        <h4 class="font-anybody font-bold text-xl uppercase text-snow mb-1 group-hover:text-action transition-colors">
+                            {{ $item->nama }}
+                        </h4>
+                        <div class="font-mono text-xs text-action mb-1">
+                            {{ $item->prodis->prodi ?? '-' }}
+                        </div>
+                        <div class="font-mono text-[11px] text-snow/50 uppercase">
+                            {{ $item->fakultas }}
                         </div>
                     </div>
-                    <div class="card-footer bg-light border-0">
-                        <div class="row text-center">
-                            <div class="col-6">
-                                <div class="fw-bold">{{ $item->npm }}</div>
-                                <small class="text-muted">NPM</small>
-                            </div>
-                            <div class="col-6">
-                                <div class="fw-bold text-dark">
-                                    {{ $item->thn_lulus ?? ($item->yudisium ? \Carbon\Carbon::parse($item->yudisium)->format('Y') : '-') }}
-                                </div>
-                                <small class="text-muted">Lulus</small>
-                            </div>
+                </div>
+
+                <div class="p-6 pt-0 border-t border-line mt-4">
+                    <div class="grid grid-cols-2 gap-2 font-mono text-xs pt-4 text-center">
+                        <div class="border-r border-line pr-2">
+                            <div class="text-snow font-bold tnum">{{ $item->npm }}</div>
+                            <div class="text-snow/40 text-[10px]">NPM</div>
+                        </div>
+                        <div class="pl-2">
+                            <div class="text-snow font-bold tnum">{{ $item->stambuk ?? '-' }}</div>
+                            <div class="text-snow/40 text-[10px]">STAMBUK</div>
                         </div>
                     </div>
                 </div>
             </div>
             @empty
-            @endforelse
-            <!-- Pagination -->
-            <div class="justify-content-center">
-                {{ $datas->links('pagination::bootstrap-5') }}
+            <div class="col-span-3 bg-surface border border-line p-12 text-center font-mono text-xs text-snow/50">
+                <i class="fa-solid fa-users-slash text-2xl text-snow/30 mb-3 block"></i>
+                TIDAK ADA DATA ALUMNI YANG DITEMUKAN
             </div>
+            @endforelse
         </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center io">
+            {{ $datas->links('pagination::bootstrap-5') }}
+        </div>
+    </div>
 </section>
 @endsection
-
-@push('script-css')
-<style>
-    .card {
-        transition: transform 0.2s ease-in-out;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
-    }
-
-    .input-group-text {
-        border-right: 0;
-    }
-
-    .form-control:focus {
-        border-color: #dee2e6;
-        box-shadow: none;
-    }
-</style>
-@endpush
