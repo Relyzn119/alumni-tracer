@@ -240,19 +240,78 @@
             <h5 class="offcanvas-title font-anybody font-bold text-lg text-snow uppercase">MENU SIKAK<span class="text-action">UMI</span></h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body p-4 font-mono text-xs space-y-4">
+        <div class="offcanvas-body p-4 font-mono text-xs space-y-3">
             <a href="{{ route('main') }}" class="block py-2 text-snow hover:text-action uppercase text-decoration-none">Home</a>
             <a href="{{ route('old-news') }}" class="block py-2 text-snow hover:text-action uppercase text-decoration-none">Berita</a>
-            <a href="{{ route('pencarian') }}" class="block py-2 text-snow hover:text-action uppercase text-decoration-none">Data Alumni</a>
-            <a href="{{ route('jejak-karir.index') }}" class="block py-2 text-snow hover:text-action uppercase text-decoration-none">Jejak Karir</a>
-            <a href="{{ route('foto') }}" class="block py-2 text-snow hover:text-action uppercase text-decoration-none">Gallery Foto</a>
-            <a href="{{ route('video') }}" class="block py-2 text-snow hover:text-action uppercase text-decoration-none">Gallery Video</a>
-            <a href="{{ route('lowongan') }}" class="block py-2 text-snow hover:text-action uppercase text-decoration-none">Lowongan Pekerjaan</a>
-            <div class="border-t border-line pt-4 space-y-2">
-                <a href="https://ppkpt.sikak-methodist.org" target="_blank" class="block text-snow/70 hover:text-action">1. Satgas PPKPT</a>
-                <a href="https://portalkemahasiswaan.sikak-methodist.org" target="_blank" class="block text-snow/70 hover:text-action">2. UKM Kampus</a>
-                <a href="https://konseling.sikak-methodist.org" target="_blank" class="block text-snow/70 hover:text-action">3. Konseling Mahasiswa</a>
+
+            <!-- Dropdown Alumni Mobile -->
+            <div>
+                <button class="w-full text-left py-2 flex items-center justify-between text-snow hover:text-action uppercase text-decoration-none bg-transparent border-0 font-mono text-xs p-0" 
+                        type="button" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#mobileMenuAlumni" 
+                        aria-expanded="false" 
+                        aria-controls="mobileMenuAlumni">
+                    <span>ALUMNI</span>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-snow/60"></i>
+                </button>
+                <div class="collapse space-y-2 pl-4 pt-2 border-l border-line ml-2 my-1" id="mobileMenuAlumni">
+                    <a href="{{ route('pencarian') }}" class="block py-1.5 text-snow/80 hover:text-action uppercase text-decoration-none">
+                        <i class="fa-solid fa-users text-action me-2"></i> Data Alumni
+                    </a>
+                    <a href="{{ route('jejak-karir.index') }}" class="block py-1.5 text-snow/80 hover:text-action uppercase text-decoration-none">
+                        <i class="fa-solid fa-briefcase text-action me-2"></i> Jejak Karir Alumni
+                    </a>
+                </div>
             </div>
+
+            <!-- Dropdown Gallery Mobile -->
+            <div>
+                <button class="w-full text-left py-2 flex items-center justify-between text-snow hover:text-action uppercase text-decoration-none bg-transparent border-0 font-mono text-xs p-0" 
+                        type="button" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#mobileMenuGallery" 
+                        aria-expanded="false" 
+                        aria-controls="mobileMenuGallery">
+                    <span>GALLERY</span>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-snow/60"></i>
+                </button>
+                <div class="collapse space-y-2 pl-4 pt-2 border-l border-line ml-2 my-1" id="mobileMenuGallery">
+                    <a href="{{ route('foto') }}" class="block py-1.5 text-snow/80 hover:text-action uppercase text-decoration-none">
+                        <i class="fa-solid fa-camera text-action me-2"></i> Foto
+                    </a>
+                    <a href="{{ route('video') }}" class="block py-1.5 text-snow/80 hover:text-action uppercase text-decoration-none">
+                        <i class="fa-solid fa-video text-action me-2"></i> Video
+                    </a>
+                </div>
+            </div>
+
+            <a href="{{ route('lowongan') }}" class="block py-2 text-snow hover:text-action uppercase text-decoration-none">Lowongan Pekerjaan</a>
+
+            <!-- Dropdown Kemahasiswaan Mobile -->
+            <div>
+                <button class="w-full text-left py-2 flex items-center justify-between text-snow hover:text-action uppercase text-decoration-none bg-transparent border-0 font-mono text-xs p-0" 
+                        type="button" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#mobileMenuKemahasiswaan" 
+                        aria-expanded="false" 
+                        aria-controls="mobileMenuKemahasiswaan">
+                    <span>KEMAHASISWAAN</span>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-snow/60"></i>
+                </button>
+                <div class="collapse space-y-2 pl-4 pt-2 border-l border-line ml-2 my-1" id="mobileMenuKemahasiswaan">
+                    <a href="https://ppkpt.sikak-methodist.org" target="_blank" class="block py-1.5 text-snow/80 hover:text-action uppercase text-decoration-none">
+                        1. Satgas PPKPT
+                    </a>
+                    <a href="https://portalkemahasiswaan.sikak-methodist.org" target="_blank" class="block py-1.5 text-snow/80 hover:text-action uppercase text-decoration-none">
+                        2. UKM Kampus
+                    </a>
+                    <a href="https://konseling.sikak-methodist.org" target="_blank" class="block py-1.5 text-snow/80 hover:text-action uppercase text-decoration-none">
+                        3. Konseling Mahasiswa
+                    </a>
+                </div>
+            </div>
+
             @auth
                 <div class="pt-6 border-t border-line">
                     @if(auth()->user()->role == 'admin')
