@@ -246,16 +246,13 @@
 
             <!-- Dropdown Alumni Mobile -->
             <div>
-                <button class="w-full text-left py-2 flex items-center justify-between text-snow hover:text-action uppercase text-decoration-none bg-transparent border-0 font-mono text-xs p-0" 
+                <button class="w-full text-left py-2 flex items-center justify-between text-snow hover:text-action uppercase text-decoration-none bg-transparent border-0 font-mono text-xs p-0 cursor-pointer" 
                         type="button" 
-                        data-bs-toggle="collapse" 
-                        data-bs-target="#mobileMenuAlumni" 
-                        aria-expanded="false" 
-                        aria-controls="mobileMenuAlumni">
+                        onclick="toggleMobileSubmenu('mobileMenuAlumni', this)">
                     <span>ALUMNI</span>
-                    <i class="fa-solid fa-chevron-down text-[10px] text-snow/60"></i>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-snow/60 transition-transform duration-200"></i>
                 </button>
-                <div class="collapse space-y-2 pl-4 pt-2 border-l border-line ml-2 my-1" id="mobileMenuAlumni">
+                <div id="mobileMenuAlumni" class="hidden space-y-2 pl-4 pt-2 border-l border-line ml-2 my-1">
                     <a href="{{ route('pencarian') }}" class="block py-1.5 text-snow/80 hover:text-action uppercase text-decoration-none">
                         <i class="fa-solid fa-users text-action me-2"></i> Data Alumni
                     </a>
@@ -267,16 +264,13 @@
 
             <!-- Dropdown Gallery Mobile -->
             <div>
-                <button class="w-full text-left py-2 flex items-center justify-between text-snow hover:text-action uppercase text-decoration-none bg-transparent border-0 font-mono text-xs p-0" 
+                <button class="w-full text-left py-2 flex items-center justify-between text-snow hover:text-action uppercase text-decoration-none bg-transparent border-0 font-mono text-xs p-0 cursor-pointer" 
                         type="button" 
-                        data-bs-toggle="collapse" 
-                        data-bs-target="#mobileMenuGallery" 
-                        aria-expanded="false" 
-                        aria-controls="mobileMenuGallery">
+                        onclick="toggleMobileSubmenu('mobileMenuGallery', this)">
                     <span>GALLERY</span>
-                    <i class="fa-solid fa-chevron-down text-[10px] text-snow/60"></i>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-snow/60 transition-transform duration-200"></i>
                 </button>
-                <div class="collapse space-y-2 pl-4 pt-2 border-l border-line ml-2 my-1" id="mobileMenuGallery">
+                <div id="mobileMenuGallery" class="hidden space-y-2 pl-4 pt-2 border-l border-line ml-2 my-1">
                     <a href="{{ route('foto') }}" class="block py-1.5 text-snow/80 hover:text-action uppercase text-decoration-none">
                         <i class="fa-solid fa-camera text-action me-2"></i> Foto
                     </a>
@@ -290,16 +284,13 @@
 
             <!-- Dropdown Kemahasiswaan Mobile -->
             <div>
-                <button class="w-full text-left py-2 flex items-center justify-between text-snow hover:text-action uppercase text-decoration-none bg-transparent border-0 font-mono text-xs p-0" 
+                <button class="w-full text-left py-2 flex items-center justify-between text-snow hover:text-action uppercase text-decoration-none bg-transparent border-0 font-mono text-xs p-0 cursor-pointer" 
                         type="button" 
-                        data-bs-toggle="collapse" 
-                        data-bs-target="#mobileMenuKemahasiswaan" 
-                        aria-expanded="false" 
-                        aria-controls="mobileMenuKemahasiswaan">
+                        onclick="toggleMobileSubmenu('mobileMenuKemahasiswaan', this)">
                     <span>KEMAHASISWAAN</span>
-                    <i class="fa-solid fa-chevron-down text-[10px] text-snow/60"></i>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-snow/60 transition-transform duration-200"></i>
                 </button>
-                <div class="collapse space-y-2 pl-4 pt-2 border-l border-line ml-2 my-1" id="mobileMenuKemahasiswaan">
+                <div id="mobileMenuKemahasiswaan" class="hidden space-y-2 pl-4 pt-2 border-l border-line ml-2 my-1">
                     <a href="https://ppkpt.sikak-methodist.org" target="_blank" class="block py-1.5 text-snow/80 hover:text-action uppercase text-decoration-none">
                         1. Satgas PPKPT
                     </a>
@@ -396,6 +387,18 @@
             requestAnimationFrame(raf);
         }
         requestAnimationFrame(raf);
+
+        // Mobile Submenu Toggle Function
+        function toggleMobileSubmenu(menuId, btn) {
+            const menu = document.getElementById(menuId);
+            if (!menu) return;
+            const isHidden = menu.classList.contains('hidden');
+            menu.classList.toggle('hidden');
+            const icon = btn.querySelector('.fa-chevron-down');
+            if (icon) {
+                icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+            }
+        }
 
         // Intersection Observer for .io elements
         const observer = new IntersectionObserver((entries) => {
