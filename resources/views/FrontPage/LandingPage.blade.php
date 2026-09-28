@@ -1,458 +1,405 @@
 @extends('Partials.Frontpage')
-@section('title', 'Home')
+@section('title', 'Portal Alumni dan Jejak Karir Alumni')
+
 @section('content')
 
-    <!-- SECTION 1 - COVER / HERO -->
-    <section class="relative min-h-screen w-full flex flex-col justify-between pt-3 pb-8 px-4 lg:px-12 overflow-hidden border-b border-line">
-        <!-- Z-0: Hero Background Plate -->
-        <div class="absolute inset-0 z-0 overflow-hidden">
-            <img src="{{ asset('img/graduate.jpg') }}" 
-                 alt="Graduation UMI" 
-                 class="hero-plate-img w-full h-full object-cover object-center plate-filter opacity-40">
-            <div class="absolute inset-0 bg-gradient-to-t from-ground via-ground/60 to-transparent"></div>
-        </div>
+    <!-- ========================================== -->
+    <!-- SECTION 1: HERO & COVER                    -->
+    <!-- ========================================== -->
+    <section class="relative w-full min-h-[95vh] flex flex-col justify-between overflow-hidden pt-24 pb-16 md:pb-24 border-b border-white/10">
+        <!-- Hero Background Image (scale-105 to prevent white edge artifacts) -->
+        <img 
+            src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2940&auto=format&fit=crop" 
+            alt="Universitas Methodist Indonesia Auditorium" 
+            class="absolute inset-0 w-full h-full object-cover scale-105 pointer-events-none select-none z-0 brightness-75 transition-transform duration-1000 ease-out"
+        />
 
-        <!-- Metadata Header (Above Green Beam Bar) -->
-        <div class="relative z-10 w-full max-w-7xl mx-auto pt-1 pb-2">
-            <div class="hero-furniture flex flex-wrap items-center justify-between text-xs font-mono text-snow/70">
-                <div class="flex items-center gap-3">
-                    <span class="text-action">SIKAK UMI // OFFICIAL PORTAL</span>
-                    <span>//</span>
-                    <span>UNIVERSITAS METHODIST INDONESIA</span>
+        <!-- Hero Gradient Overlay -->
+        <div class="absolute inset-0 z-10 bg-gradient-to-b from-[#080805]/75 via-[#080805]/45 to-[#080805]/95 pointer-events-none"></div>
+
+        <!-- Top Info Bar -->
+        <div class="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 pt-6">
+            <div class="flex items-center justify-between text-xs tracking-widest uppercase font-light text-neutral-400">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[#243B53] border border-[#486581]"></span>
+                    <span>Medan, Indonesia</span>
                 </div>
-                <div class="tnum">ACCREDITED // GRADE A INSTITUTION</div>
+                <div class="hidden md:block tracking-widest text-neutral-400/90">
+                    Portal Alumni dan Jejak Karir Alumni
+                </div>
             </div>
         </div>
 
-        <!-- Z-4: Timing Beam Bar (Green Line below Metadata Header) -->
-        <div class="relative z-40 w-full h-1 bg-action beam-bar mb-2"></div>
-
-        <!-- HERO CONTENT CONTAINER -->
-        <div class="relative z-10 w-full max-w-7xl mx-auto flex-1 flex flex-col justify-end pb-12 pt-6">
-            
-            <!-- Z-1: Giant Wordmark Mask -->
-            <div class="relative z-10 overflow-hidden my-4">
-                <h1 class="hero-wordmark-inner text-[11vw] sm:text-[12vw] font-anybody font-black uppercase text-snow tracking-tighter leading-none select-none">
-                    SIKAK<span class="text-action">UMI</span>
+        <!-- Hero Content Layer -->
+        <div id="hero" class="relative z-20 max-w-7xl mx-auto w-full px-6 md:px-12 pt-20 mt-auto flex flex-col lg:flex-row items-start lg:items-end justify-between gap-10">
+            <!-- Left Copy -->
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 text-xs md:text-sm uppercase tracking-widest text-[#829AB1] font-medium mb-4">
+                    <span class="w-2 h-2 rounded-full bg-[#243B53] animate-ping"></span>
+                    <span>ALUMNI TRACER &amp; CAREER ACCELERATION</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter leading-[1.02] text-white">
+                    Connecting Alumni, <br />
+                    <span class="italic font-normal text-white/90">Shaping The Future</span>
                 </h1>
-            </div>
-
-            <p class="hero-furniture text-sm sm:text-lg text-snow/80 max-w-2xl font-archivo mb-8">
-                Sistem Informasi Kemahasiswaan, Alumni, dan Kerjasama. Platform terintegrasi penelusuran rekam jejak karir alumni &amp; akreditasi institusi Universitas Methodist Indonesia.
-            </p>
-
-            <!-- HERO STATS COUNTER GRID (Z-3) -->
-            <div class="hero-furniture relative z-30 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 pt-6 border-t border-line">
-                <div class="bg-surface/80 border border-line p-4 backdrop-blur-sm">
-                    <span class="text-[10px] font-mono text-snow/50 uppercase block mb-1">TOTAL ALUMNI</span>
-                    <span class="font-mono text-3xl font-bold text-action tnum counter" data-target="12450">0</span>
-                    <span class="text-xs text-snow/40 ml-1">LULUSAN</span>
-                </div>
-                <div class="bg-surface/80 border border-line p-4 backdrop-blur-sm">
-                    <span class="text-[10px] font-mono text-snow/50 uppercase block mb-1">PROGRAM STUDI</span>
-                    <span class="font-mono text-3xl font-bold text-snow tnum counter" data-target="14">0</span>
-                    <span class="text-xs text-snow/40 ml-1">PRODI ACTIVE</span>
-                </div>
-                <div class="bg-surface/80 border border-line p-4 backdrop-blur-sm">
-                    <span class="text-[10px] font-mono text-snow/50 uppercase block mb-1">TRACER PLACEMENT</span>
-                    <span class="font-mono text-3xl font-bold text-snow tnum counter" data-target="94">0</span>
-                    <span class="text-xs text-snow/40 ml-1">% KERJA &lt; 6 BLN</span>
-                </div>
-                <div class="bg-surface/80 border border-line p-4 backdrop-blur-sm">
-                    <span class="text-[10px] font-mono text-snow/50 uppercase block mb-1">MITRA KERJASAMA</span>
-                    <span class="font-mono text-3xl font-bold text-alert tnum counter" data-target="{{ $partner->count() > 0 ? $partner->count() : 45 }}">0</span>
-                    <span class="text-xs text-snow/40 ml-1">PERUSAHAAN</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Decorative Grid Ticks -->
-        <div class="hero-ticks absolute left-4 bottom-4 z-30 font-mono text-[9px] text-snow/30 hidden sm:block">
-            SYSTEM TELEMETRY // LAT 3.5898° N, LONG 98.6738° E
-        </div>
-    </section>
-
-    <!-- SECTION 2 - THE FACE (STICKY SCROLL TRACER JOURNEY) -->
-    <section id="face-section" class="relative w-full h-[220vh] border-b border-line">
-        <div class="sticky top-0 left-0 w-full h-screen overflow-hidden flex flex-col justify-between p-6 lg:p-12">
-            <!-- Background Image Container -->
-            <div class="absolute inset-0 z-0">
-                <img id="face-bg" src="{{ asset('img/graduate.jpg') }}" 
-                     alt="Tracer Journey" 
-                     class="w-full h-full object-cover plate-filter transition-all duration-700 opacity-25">
-                <div class="absolute inset-0 bg-gradient-to-r from-ground via-ground/90 to-transparent"></div>
-            </div>
-
-            <!-- Sticky Header HUD -->
-            <div class="relative z-10 flex items-center justify-between border-b border-line pb-4">
-                <div>
-                    <span class="text-xs font-mono text-action uppercase tracking-widest block">SECTION 02 // ALUMNI TRACER MILESTONE</span>
-                    <h2 class="text-2xl sm:text-4xl font-anybody font-extrabold uppercase text-snow">ALUMNI CAREER JOURNEY</h2>
-                </div>
-                <div class="font-mono text-xs text-snow/60 tnum">
-                    STAGE PROGRESS: <span id="face-progress-num" class="text-action font-bold">0%</span>
-                </div>
-            </div>
-
-            <!-- Main Content Card -->
-            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto">
-                <div class="lg:col-span-1 hidden lg:flex flex-col items-center gap-2">
-                    <div class="w-1 h-64 bg-line relative rounded-full overflow-hidden">
-                        <div id="face-gauge-bar" class="w-full bg-action absolute top-0 left-0 transition-all duration-150" style="height: 0%;"></div>
-                    </div>
-                    <span class="font-mono text-[10px] text-snow/50 tnum">UMI 2026</span>
-                </div>
-
-                <div class="lg:col-span-8 bg-surface/90 border border-line p-6 lg:p-10 backdrop-blur-md max-w-3xl">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span id="face-section-badge" class="px-2.5 py-1 bg-action/10 text-action font-mono text-xs border border-action/30">
-                            STAGE 01 / 05
-                        </span>
-                        <span id="face-alt" class="font-mono text-xs text-snow/60 tnum">PRODI DATA INTEGRATION</span>
-                    </div>
-                    <h3 id="face-title" class="text-3xl sm:text-5xl font-anybody font-black uppercase text-snow mb-4">
-                        REGISTRASI ALUMNI
-                    </h3>
-                    <p id="face-desc" class="text-sm sm:text-base text-snow/80 leading-relaxed font-archivo mb-6">
-                        Mahasiswa yang lulus dari sidang meja hijau mendaftarkan akun alumni secara resmi di portal SIKAK UMI dengan melengkapi berkas Ijazah SMA/SMK/Sederajat, KTP, dan foto formal wisudawan.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-line font-mono text-xs">
-                        <div>REQ ACCURACY: <span id="face-speed" class="text-action tnum font-bold">100% VERIFIED</span></div>
-                        <div>STATUS: <span id="face-gradient" class="text-alert tnum font-bold">OPEN REGISTRATION</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Checkpoint Pills -->
-            <div class="relative z-10 flex items-center justify-between overflow-x-auto gap-4 pt-4 border-t border-line">
-                <div class="checkpoint-pill font-mono text-xs px-3 py-1.5 border border-line text-snow/50 transition-colors" data-step="0">01. REGISTRASI</div>
-                <div class="checkpoint-pill font-mono text-xs px-3 py-1.5 border border-line text-snow/50 transition-colors" data-step="1">02. VERIFIKASI</div>
-                <div class="checkpoint-pill font-mono text-xs px-3 py-1.5 border border-line text-snow/50 transition-colors" data-step="2">03. TRACER STUDY</div>
-                <div class="checkpoint-pill font-mono text-xs px-3 py-1.5 border border-line text-snow/50 transition-colors" data-step="3">04. JEJAK KARIR</div>
-                <div class="checkpoint-pill font-mono text-xs px-3 py-1.5 border border-line text-snow/50 transition-colors" data-step="4">05. MITRA KARIR</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 3 - THE TRACE (TELEMETRY STATISTICS CHART) -->
-    <section class="relative w-full py-24 px-4 lg:px-12 border-b border-line bg-surface/40">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 io">
-                <div>
-                    <span class="text-xs font-mono text-action uppercase tracking-widest block mb-2">SECTION 03 // ALUMNI EMPLOYMENT ACCELERATION</span>
-                    <h2 class="text-3xl sm:text-5xl font-anybody font-extrabold uppercase text-snow">CAREER VELOCITY TELEMETRY</h2>
-                </div>
-                <div class="font-mono text-xs text-snow/60 max-w-xs">
-                    BENCHMARK: UMI GRADUATES <br>
-                    AVG TIME TO FIRST JOB: <span class="text-action tnum">2.4 MONTHS</span>
-                </div>
-            </div>
-
-            <div class="relative bg-ground border border-line p-4 sm:p-8 overflow-hidden io">
-                <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(46,94,153,0.08),transparent_60%)]"></div>
-                
-                <svg viewBox="0 0 1200 460" class="w-full h-auto relative z-10 overflow-visible">
-                    <line x1="80" y1="80" x2="1120" y2="80" stroke="rgba(238,243,248,0.08)" stroke-dasharray="4 4" />
-                    <line x1="80" y1="160" x2="1120" y2="160" stroke="rgba(238,243,248,0.08)" stroke-dasharray="4 4" />
-                    <line x1="80" y1="240" x2="1120" y2="240" stroke="rgba(238,243,248,0.08)" stroke-dasharray="4 4" />
-                    <line x1="80" y1="320" x2="1120" y2="320" stroke="rgba(238,243,248,0.08)" stroke-dasharray="4 4" />
-
-                    <text x="50" y="85" fill="rgba(238,243,248,0.4)" font-family="Martian Mono" font-size="12">100%</text>
-                    <text x="50" y="165" fill="rgba(238,243,248,0.4)" font-family="Martian Mono" font-size="12">75%</text>
-                    <text x="50" y="245" fill="rgba(238,243,248,0.4)" font-family="Martian Mono" font-size="12">50%</text>
-                    <text x="50" y="325" fill="rgba(238,243,248,0.4)" font-family="Martian Mono" font-size="12">25%</text>
-
-                    <path id="telemetry-path" class="trace-path io" 
-                          d="M80 392 C 150 340, 190 262, 240 200 C 300 128, 330 158, 370 214 C 400 258, 430 206, 470 172 C 540 112, 610 126, 690 154 C 760 180, 800 154, 860 124 C 930 90, 1000 66, 1120 56" 
-                          fill="none" stroke="#2E5E99" stroke-width="4" stroke-linecap="round" />
-
-                    <g transform="translate(240, 200)">
-                        <circle r="6" fill="#2E5E99" />
-                        <text x="12" y="-12" fill="#2E5E99" font-family="Martian Mono" font-size="11" font-weight="bold">68% EMPLOYED (&lt; 3 MOS)</text>
-                    </g>
-                    <g transform="translate(690, 154)">
-                        <circle r="6" fill="#FF6B3D" />
-                        <text x="12" y="-12" fill="#FF6B3D" font-family="Martian Mono" font-size="11" font-weight="bold">88% IN-FIELD MATCH</text>
-                    </g>
-                    <g transform="translate(1120, 56)">
-                        <circle r="8" fill="#2E5E99" />
-                        <text x="-180" y="-16" fill="#2E5E99" font-family="Martian Mono" font-size="12" font-weight="bold">94.8% TOTAL PLACEMENT</text>
-                    </g>
-                </svg>
-
-                <div class="flex justify-between items-center mt-6 pt-4 border-t border-line font-mono text-xs text-snow/50">
-                    <div>WISUDA [0 MOS]</div>
-                    <div>SEMESTER 1 [3 MOS]</div>
-                    <div>SEMESTER 2 [6 MOS]</div>
-                    <div>SURVEY COMPLETION [12 MOS]</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 4 - SPEED KIT / FEATURES (LAYANAN SIKAK UMI) -->
-    <section class="relative w-full py-24 px-4 lg:px-12 border-b border-line">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 io">
-                <div>
-                    <span class="text-xs font-mono text-action uppercase tracking-widest block mb-2">SECTION 04 // FEATURE PLATFORM</span>
-                    <h2 class="text-3xl sm:text-5xl font-anybody font-extrabold uppercase text-snow">INTEGRATED SERVICES</h2>
-                </div>
-                <p class="text-sm text-snow/70 max-w-md font-archivo">
-                    Layanan digital terpadu untuk pencarian data alumni, verifikasi surat akademik, pengisian kuesioner tracer study, dan portofolio karir.
+                <p class="text-base md:text-lg text-neutral-300 font-light max-w-xl mt-6 leading-relaxed">
+                    Portal Alumni dan Jejak Karir Alumni Universitas Methodist Indonesia. Wadah terintegrasi penelusuran karir lulusan, pengisian tracer study, informasi lowongan kerja, dan sinergi jejaring profesional lintas angkatan.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 io">
-                <!-- Feature 1: Data Alumni -->
-                <a href="{{ route('pencarian') }}" class="bg-surface border border-line p-6 text-decoration-none group hover:border-action transition-all">
-                    <div class="w-12 h-12 bg-action/10 border border-action/30 flex items-center justify-center text-action text-xl mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-users"></i>
-                    </div>
-                    <span class="font-mono text-[10px] text-action uppercase tracking-widest block mb-1">DIRECTORY</span>
-                    <h4 class="font-anybody font-bold text-xl uppercase text-snow mb-2 group-hover:text-action transition-colors">DATA ALUMNI</h4>
-                    <p class="text-xs text-snow/70 leading-relaxed">
-                        Pencarian database alumni lengkap berdasarkan NPM, Program Studi, Fakultas, dan tahun kelulusan.
-                    </p>
+            <!-- Right Call to Action Buttons -->
+            <div class="flex flex-col sm:flex-row lg:flex-col gap-4 w-full sm:w-auto shrink-0">
+                <a 
+                    href="{{ route('login') }}" 
+                    class="glass-panel px-7 py-4 rounded-full flex items-center justify-between gap-6 hover:text-white hover:border-[#243B53] hover:bg-[#243B53]/30 transition-all group shadow-xl text-decoration-none text-white"
+                >
+                    <span class="text-sm font-medium tracking-wide">Portal Alumni</span>
+                    <iconify-icon icon="solar:arrow-right-linear" class="text-lg group-hover:translate-x-1.5 transition-transform duration-300 text-[#829AB1] group-hover:text-white"></iconify-icon>
                 </a>
 
-                <!-- Feature 2: Jejak Karir -->
-                <a href="{{ route('jejak-karir.index') }}" class="bg-surface border border-line p-6 text-decoration-none group hover:border-action transition-all">
-                    <div class="w-12 h-12 bg-action/10 border border-action/30 flex items-center justify-center text-action text-xl mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-briefcase"></i>
-                    </div>
-                    <span class="font-mono text-[10px] text-action uppercase tracking-widest block mb-1">CAREER PORTFOLIO</span>
-                    <h4 class="font-anybody font-bold text-xl uppercase text-snow mb-2 group-hover:text-action transition-colors">JEJAK KARIR</h4>
-                    <p class="text-xs text-snow/70 leading-relaxed">
-                        Rekam jejak riwayat pekerjaan dan posisi profesional alumni di berbagai instansi &amp; perusahaan nasional/multinasional.
-                    </p>
-                </a>
-
-                <!-- Feature 3: Berita & Event -->
-                <a href="{{ route('old-news') }}" class="bg-surface border border-line p-6 text-decoration-none group hover:border-action transition-all">
-                    <div class="w-12 h-12 bg-action/10 border border-action/30 flex items-center justify-center text-action text-xl mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-newspaper"></i>
-                    </div>
-                    <span class="font-mono text-[10px] text-action uppercase tracking-widest block mb-1">INFORMATION</span>
-                    <h4 class="font-anybody font-bold text-xl uppercase text-snow mb-2 group-hover:text-action transition-colors">BERITA KAMPUS</h4>
-                    <p class="text-xs text-snow/70 leading-relaxed">
-                        Informasi terkini seputar kegiatan akademik, prestasi mahasiswa, agenda reuni, dan pengumuman alumni.
-                    </p>
-                </a>
-
-                <!-- Feature 4: Lowongan Karir -->
-                <a href="{{ route('lowongan') }}" class="bg-surface border border-line p-6 text-decoration-none group hover:border-action transition-all">
-                    <div class="w-12 h-12 bg-action/10 border border-action/30 flex items-center justify-center text-action text-xl mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-user-graduate"></i>
-                    </div>
-                    <span class="font-mono text-[10px] text-action uppercase tracking-widest block mb-1">JOB OPPORTUNITIES</span>
-                    <h4 class="font-anybody font-bold text-xl uppercase text-snow mb-2 group-hover:text-action transition-colors">LOWONGAN KERJA</h4>
-                    <p class="text-xs text-snow/70 leading-relaxed">
-                        Informasi lowongan pekerjaan khusus fresh graduate &amp; pengalaman dari mitra perusahaan Universitas.
-                    </p>
+                <a 
+                    href="{{ route('pencarian') }}" 
+                    class="glass-panel px-7 py-4 rounded-full flex items-center justify-between gap-6 hover:text-white hover:border-[#243B53] hover:bg-[#243B53]/30 transition-all group shadow-xl text-decoration-none text-white"
+                >
+                    <span class="text-sm font-medium tracking-wide">Pencarian Alumni</span>
+                    <iconify-icon icon="solar:arrow-right-linear" class="text-lg group-hover:translate-x-1.5 transition-transform duration-300 text-[#829AB1] group-hover:text-white"></iconify-icon>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 5 - BERITA TERKINI & NEWS ROSTER -->
-    <section class="relative w-full py-24 px-4 lg:px-12 border-b border-line bg-surface/30">
-        <div class="max-w-7xl mx-auto">
+
+    <!-- ========================================== -->
+    <!-- SECTION 2: ABOUT TRACER & STATS            -->
+    <!-- ========================================== -->
+    <!-- ========================================== -->
+    <!-- SECTION 2: ABOUT TRACER & STATS            -->
+    <!-- ========================================== -->
+    <section id="about" class="relative py-24 md:py-32 px-6 md:px-12 bg-transparent border-b border-white/10 overflow-hidden">
+        <!-- Background Image (img/sesion4.png) -->
+        <img 
+            src="{{ asset('img/sesion4.png') }}" 
+            alt="Tracer Background" 
+            class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none z-0 opacity-40 brightness-90"
+        />
+        <!-- Progressive Gradient: White-translucent to subtle dark -->
+        <div class="absolute inset-0 bg-gradient-to-b from-white/[0.08] via-black/20 to-black/40 pointer-events-none z-0"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-start justify-between">
+            <!-- Left Column: Details -->
+            <div class="w-full lg:w-1/2 io">
+                <div class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#829AB1] font-medium mb-4">
+                    <span class="w-2 h-2 rounded-full bg-[#243B53]"></span>
+                    <span>TENTANG TRACER STUDY SIKAK</span>
+                </div>
+                <h2 class="text-3xl md:text-5xl font-light tracking-tight text-white leading-tight mb-6">
+                    Pusat Rekam Jejak Karir &amp; Sinergi Alumni
+                </h2>
+                <p class="text-neutral-300 font-light leading-relaxed border-b border-white/10 pb-8 mb-8 text-base md:text-lg">
+                    SIKAK Tracer Study memetakan transisi lulusan Universitas Methodist Indonesia menuju dunia kerja dan profesional. Data yang dihimpun menjadi fondasi evaluasi kurikulum akademik, akreditasi institusi, serta pembuka jalan kemitraan industri bagi adik-adik mahasiswa.
+                </p>
+
+                <!-- Action Links -->
+                <div class="flex flex-wrap items-center gap-4">
+                    <a 
+                        href="{{ route('jejak-karir.index') }}" 
+                        class="inline-flex items-center gap-3 bg-[#243B53]/80 backdrop-blur-md border border-[#486581] text-white px-6 py-3.5 rounded-xl hover:bg-[#334E68] transition-all group font-medium text-sm text-decoration-none shadow-[0_0_20px_rgba(36,59,83,0.4)]"
+                    >
+                        <iconify-icon icon="solar:shield-check-linear" class="text-xl text-[#829AB1]"></iconify-icon>
+                        <span>Eksplor Jejak Karir</span>
+                        <iconify-icon icon="solar:arrow-right-linear" class="text-lg group-hover:translate-x-1 transition-transform"></iconify-icon>
+                    </a>
+
+                    <a 
+                        href="{{ route('register') }}" 
+                        class="inline-flex items-center gap-2 glass-panel text-neutral-200 px-6 py-3.5 rounded-xl hover:text-white hover:border-[#486581] hover:bg-white/[0.1] transition-all text-sm text-decoration-none shadow-lg"
+                    >
+                        <span>Registrasi Data Alumni</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Column: Stats Grid (2x2 Glass Cards) -->
+            <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4 md:gap-6 io">
+                <!-- Stat 1 -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-[#486581] hover:bg-white/[0.08] transition-all duration-300 group shadow-lg">
+                    <div class="text-4xl md:text-5xl font-light tracking-tight text-white mb-2 group-hover:text-[#829AB1] transition-colors">
+                        12K<span class="text-[#829AB1] font-normal">+</span>
+                    </div>
+                    <div class="text-xs md:text-sm text-neutral-300 font-light">
+                        Alumni Terdaftar
+                    </div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-[#486581] hover:bg-white/[0.08] transition-all duration-300 group shadow-lg">
+                    <div class="text-4xl md:text-5xl font-light tracking-tight text-white mb-2 group-hover:text-[#829AB1] transition-colors">
+                        94<span class="text-[#829AB1] font-normal">%</span>
+                    </div>
+                    <div class="text-xs md:text-sm text-neutral-300 font-light">
+                        Bekerja &lt; 6 Bulan
+                    </div>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-[#486581] hover:bg-white/[0.08] transition-all duration-300 group shadow-lg">
+                    <div class="text-4xl md:text-5xl font-light tracking-tight text-white mb-2 group-hover:text-[#829AB1] transition-colors">
+                        14<span class="text-[#829AB1] font-normal">+</span>
+                    </div>
+                    <div class="text-xs md:text-sm text-neutral-300 font-light">
+                        Program Studi
+                    </div>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-[#486581] hover:bg-white/[0.08] transition-all duration-300 group shadow-lg">
+                    <div class="text-4xl md:text-5xl font-light tracking-tight text-white mb-2 group-hover:text-[#829AB1] transition-colors">
+                        {{ isset($partner) && $partner->count() > 0 ? $partner->count() : '50' }}<span class="text-[#829AB1] font-normal">+</span>
+                    </div>
+                    <div class="text-xs md:text-sm text-neutral-300 font-light">
+                        Mitra Kerjasama
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- SECTION 3: WHY CHOOSE METHODIST (KEUNGGULAN) -->
+    <!-- ========================================== -->
+    <section id="features" class="relative py-24 px-6 md:px-12 bg-transparent overflow-hidden border-b border-white/10">
+        <!-- Background Image (img/sesion3.png) -->
+        <img 
+            src="{{ asset('img/sesion3.png') }}" 
+            alt="Keunggulan Background" 
+            class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none z-0 opacity-35 brightness-80"
+        />
+        <!-- Progressive Darkening Gradient Layer 2 -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/45 via-black/70 to-black/85 pointer-events-none z-0"></div>
+
+        <!-- Central Glow Circle Detail -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[#243B53]/20 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center max-w-2xl mx-auto mb-16 io">
+                <div class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#829AB1] font-medium mb-3">
+                    <span class="w-2 h-2 rounded-full bg-[#243B53]"></span>
+                    <span>KEUNGGULAN LULUSAN</span>
+                </div>
+                <h2 class="text-3xl md:text-5xl font-light tracking-tight text-white mb-4">
+                    Keunggulan Alumni Methodist
+                </h2>
+                <p class="text-neutral-300 font-light text-base leading-relaxed">
+                    Kesiapan kerja, jejaring global, dan kompetensi teruji yang menempatkan lulusan Methodist di barisan terdepan industri.
+                </p>
+            </div>
+
+            <!-- 3-Column Feature Cards Grid (Glass Styling) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature Card 1 -->
+                <div class="glass-panel bg-white/[0.04] backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-2xl relative overflow-hidden group hover:border-[#486581] hover:bg-white/[0.08] transition-all duration-300 shadow-2xl flex flex-col justify-between io">
+                    <div class="w-14 h-14 rounded-2xl glass-panel bg-white/[0.06] backdrop-blur-md border border-white/15 flex items-center justify-center text-[#829AB1] mb-8 group-hover:scale-110 group-hover:border-[#486581] group-hover:bg-[#243B53]/30 transition-all duration-300 shadow-md">
+                        <iconify-icon icon="solar:shield-check-linear" class="text-3xl"></iconify-icon>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-medium text-white mb-3 group-hover:text-[#829AB1] transition-colors">
+                            Kompetensi Terstandarisasi
+                        </h3>
+                        <p class="text-sm text-neutral-300 font-light leading-relaxed">
+                            Lulusan dibekali sertifikasi keahlian profesional dan kemampuan adaptif terhadap disrupsi teknologi di dunia kerja modern.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center text-xs text-neutral-400 group-hover:text-[#829AB1] transition-colors">
+                        <span>Lihat Profil Lulusan</span>
+                        <iconify-icon icon="solar:arrow-right-linear" class="ml-2 group-hover:translate-x-1 transition-transform"></iconify-icon>
+                    </div>
+                </div>
+
+                <!-- Feature Card 2 -->
+                <div class="glass-panel bg-white/[0.04] backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-2xl relative overflow-hidden group hover:border-[#486581] hover:bg-white/[0.08] transition-all duration-300 shadow-2xl flex flex-col justify-between io">
+                    <div class="w-14 h-14 rounded-2xl glass-panel bg-white/[0.06] backdrop-blur-md border border-white/15 flex items-center justify-center text-[#829AB1] mb-8 group-hover:scale-110 group-hover:border-[#486581] group-hover:bg-[#243B53]/30 transition-all duration-300 shadow-md">
+                        <iconify-icon icon="solar:laptop-minimalistic-linear" class="text-3xl"></iconify-icon>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-medium text-white mb-3 group-hover:text-[#829AB1] transition-colors">
+                            Portal Tracer Real-Time
+                        </h3>
+                        <p class="text-sm text-neutral-300 font-light leading-relaxed">
+                            Akses mudah pemutakhiran data karir, pencarian sesama rekan alumni, hingga unduhan berkas validasi alumni secara digital.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center text-xs text-neutral-400 group-hover:text-[#829AB1] transition-colors">
+                        <span>Pencarian Database</span>
+                        <iconify-icon icon="solar:arrow-right-linear" class="ml-2 group-hover:translate-x-1 transition-transform"></iconify-icon>
+                    </div>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div class="glass-panel bg-white/[0.04] backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-2xl relative overflow-hidden group hover:border-[#486581] hover:bg-white/[0.08] transition-all duration-300 shadow-2xl flex flex-col justify-between io">
+                    <div class="w-14 h-14 rounded-2xl glass-panel bg-white/[0.06] backdrop-blur-md border border-white/15 flex items-center justify-center text-[#829AB1] mb-8 group-hover:scale-110 group-hover:border-[#486581] group-hover:bg-[#243B53]/30 transition-all duration-300 shadow-md">
+                        <iconify-icon icon="solar:users-group-rounded-linear" class="text-3xl"></iconify-icon>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-medium text-white mb-3 group-hover:text-[#829AB1] transition-colors">
+                            Jaringan Karir &amp; Kemitraan
+                        </h3>
+                        <p class="text-sm text-neutral-300 font-light leading-relaxed">
+                            Koneksi aktif dengan puluhan institusi, universitas mitra, dan korporasi industri membuka peluang rekrutmen kerja eksklusif.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center text-xs text-neutral-400 group-hover:text-[#829AB1] transition-colors">
+                        <span>Lihat Lowongan Kerja</span>
+                        <iconify-icon icon="solar:arrow-right-linear" class="ml-2 group-hover:translate-x-1 transition-transform"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- SECTION 4: BERITA TERKINI & LIHAT BERITA   -->
+    <!-- ========================================== -->
+    <section id="news" class="relative py-24 px-6 md:px-12 bg-transparent overflow-hidden border-b border-white/10">
+        <!-- Background Image (img/sesion2.png) -->
+        <img 
+            src="{{ asset('img/sesion2.png') }}" 
+            alt="Berita Background" 
+            class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none z-0 opacity-60 brightness-95"
+        />
+        <!-- Progressive Darkening Gradient Layer 3 -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/70 pointer-events-none z-0"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 io">
                 <div>
-                    <span class="text-xs font-mono text-action uppercase tracking-widest block mb-2">SECTION 05 // LATEST NEWS &amp; UPDATES</span>
-                    <h2 class="text-3xl sm:text-5xl font-anybody font-extrabold uppercase text-snow">BERITA TERKINI</h2>
+                    <div class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#829AB1] font-medium mb-3">
+                        <span class="w-2 h-2 rounded-full bg-[#243B53]"></span>
+                        <span>BERITA &amp; INFORMASI TERKINI</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-light tracking-tight text-white">
+                        Lihat Berita Terkini
+                    </h2>
                 </div>
-                <a href="{{ route('old-news') }}" class="font-mono text-xs text-action hover:underline text-decoration-none">
-                    VIEW ALL NEWS // MORE &rarr;
+                <a href="{{ route('old-news') }}" class="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-neutral-400 hover:text-[#829AB1] transition-colors text-decoration-none">
+                    <span>Lihat Semua Berita</span>
+                    <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 io">
-                @forelse ($datas as $item)
-                    <div class="bg-ground border border-line overflow-hidden group flex flex-col justify-between">
+            @if(isset($datas) && $datas->count() > 0)
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    @foreach ($datas as $item)
+                    <div class="glass-panel bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden group hover:border-[#486581] hover:bg-white/[0.07] transition-all duration-300 flex flex-col justify-between shadow-2xl io">
                         <div>
-                            <div class="relative h-48 w-full overflow-hidden bg-surface">
-                                <span class="absolute top-3 left-3 z-10 px-2.5 py-1 bg-action/20 text-action font-mono text-[10px] border border-action/30 uppercase">
-                                    {{ $item->kategori->nama ?? 'BERITA' }}
-                                </span>
-                                <img src="{{ asset('images/berita/' . $item->file) }}" 
+                            <div class="relative h-56 w-full overflow-hidden bg-transparent">
+                                <img src="{{ asset('images/berita/' . ($item->gambar ?? 'default.jpg')) }}" 
                                      alt="{{ $item->judul }}" 
-                                     class="w-full h-full object-cover plate-filter group-hover:scale-105 transition-transform duration-500">
+                                     class="w-full h-full object-cover group-hover:scale-105 duration-700 transition-transform">
+                                <span class="absolute top-4 left-4 bg-[#243B53]/80 border border-[#486581] backdrop-blur-md px-3 py-1 rounded-full text-[11px] text-white font-medium uppercase tracking-wider">
+                                    {{ $item->kategori->kategori ?? 'Akademik' }}
+                                </span>
                             </div>
                             <div class="p-6">
-                                <div class="font-mono text-[11px] text-snow/50 mb-2 tnum">
-                                    PUBLISHED: {{ $item->created_at->diffForHumans() }}
+                                <div class="text-xs text-neutral-400 mb-2">
+                                    {{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y') }}
                                 </div>
-                                <h4 class="font-anybody font-bold text-lg text-snow uppercase mb-3 line-clamp-2 group-hover:text-action transition-colors">
+                                <h3 class="text-lg font-medium text-white group-hover:text-[#829AB1] transition-colors line-clamp-2 leading-snug mb-3">
                                     {{ $item->judul }}
-                                </h4>
-                                <p class="text-xs text-snow/70 line-clamp-3 font-archivo leading-relaxed mb-4">
-                                    {{ Str::limit(strip_tags($item['konten']), 90, '...') }}
+                                </h3>
+                                <p class="text-xs text-neutral-300 font-light line-clamp-3 leading-relaxed">
+                                    {!! Str::limit(strip_tags($item->deskripsi), 120) !!}
                                 </p>
                             </div>
                         </div>
                         <div class="p-6 pt-0">
-                            <a href="/read/{{ $item->id }}" class="block w-full py-2.5 text-center border border-line text-snow font-mono text-xs uppercase group-hover:border-action group-hover:bg-action group-hover:text-white font-bold transition-all text-decoration-none">
-                                BACA SELENGKAPNYA
+                            <a href="{{ route('view-berita', $item->id) }}" class="inline-flex items-center gap-2 text-xs font-medium text-[#829AB1] hover:text-white hover:underline text-decoration-none">
+                                <span>Baca Selengkapnya</span>
+                                <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
                             </a>
                         </div>
                     </div>
-                @empty
-                    <div class="col-span-3 text-center py-12 border border-line font-mono text-xs text-snow/50">
-                        BELUM ADA DATA BERITA TERSEDIA
-                    </div>
-                @endforelse
-            </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="glass-panel bg-white/[0.03] backdrop-blur-xl border border-white/10 p-12 text-center rounded-2xl text-neutral-400 text-sm">
+                    Belum ada berita yang dipublikasikan saat ini.
+                </div>
+            @endif
         </div>
     </section>
 
-    <!-- SECTION 6 - MITRA KERJASAMA CAROUSEL & PARTNERS -->
-    <section class="relative w-full py-24 px-4 lg:px-12 border-b border-line">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 io">
-                <div>
-                    <span class="text-xs font-mono text-action uppercase tracking-widest block mb-2">SECTION 06 // INSTITUTIONAL PARTNERSHIPS</span>
-                    <h2 class="text-3xl sm:text-5xl font-anybody font-extrabold uppercase text-snow">MITRA KERJASAMA</h2>
-                </div>
-                <div class="font-mono text-xs text-snow/60">
-                    NETWORK OF {{ $partner->count() > 0 ? $partner->count() : 45 }}+ RECOGNIZED PARTNER COMPANIES
-                </div>
-            </div>
 
-            @if ($partner->isEmpty())
-                <div class="bg-surface border border-line p-8 text-center font-mono text-xs text-snow/50 io">
-                    DATA MITRA BELUM TERSEDIA
+    <!-- ========================================== -->
+    <!-- SECTION 5: MITRA KERJASAMA (SEMUA LOGO)    -->
+    <!-- ========================================== -->
+    @php
+        $logoFiles = [];
+        $logoPath = public_path('images/logo_instansi');
+        if (is_dir($logoPath)) {
+            $scanned = scandir($logoPath);
+            foreach ($scanned as $f) {
+                if (!in_array($f, ['.', '..']) && !is_dir($logoPath . '/' . $f)) {
+                    $logoFiles[] = $f;
+                }
+            }
+        }
+    @endphp
+
+    <section id="mitra" class="relative py-24 px-6 md:px-12 bg-transparent overflow-hidden">
+        <!-- Background Image (img/sesion5.png) -->
+        <img 
+            src="{{ asset('img/sesion5.png') }}" 
+            alt="Mitra Background" 
+            class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none z-0 opacity-55 brightness-95"
+        />
+        <!-- Progressive Darkening Gradient Layer 4: Deep dark blend into footer -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/75 to-black/85 pointer-events-none z-0"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center max-w-2xl mx-auto mb-16 io">
+                <div class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#829AB1] font-medium mb-3">
+                    <span class="w-2 h-2 rounded-full bg-[#243B53]"></span>
+                    <span>SINERGI &amp; JARINGAN GLOBAL</span>
                 </div>
-            @else
-                <div class="bg-surface border border-line p-6 lg:p-10 io">
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-center">
-                        @foreach ($partner as $item)
-                            <div class="p-4 bg-ground border border-line flex items-center justify-center h-24 hover:border-action transition-all">
-                                <img src="{{ asset('images/logo_instansi/' . $item->foto) }}"
-                                     alt="{{ $item->instansi }}" 
-                                     class="max-h-16 max-w-full object-contain plate-filter grayscale hover:grayscale-0 transition-all">
-                            </div>
-                        @endforeach
+                <h2 class="text-3xl md:text-5xl font-light tracking-tight text-white mb-4">
+                    MITRA KERJASAMA
+                </h2>
+                <p class="text-neutral-300 font-light text-base leading-relaxed">
+                    Jaringan kolaborasi strategis Universitas Methodist Indonesia bersama instansi pemerintah, universitas mitra, rumah sakit, dan korporasi industri terkemuka.
+                </p>
+            </div>
+            
+            @if(count($logoFiles) > 0)
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 items-center">
+                    @foreach ($logoFiles as $logo)
+                    <div class="glass-panel bg-white/[0.03] backdrop-blur-md border border-white/10 p-3.5 rounded-xl flex items-center justify-center h-24 hover:border-[#486581] hover:bg-white/[0.08] transition-all duration-300 group shadow-lg io">
+                        <img 
+                            src="{{ asset('images/logo_instansi/' . $logo) }}" 
+                            alt="{{ pathinfo($logo, PATHINFO_FILENAME) }}" 
+                            loading="lazy"
+                            class="max-h-12 max-w-[110px] object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                        />
                     </div>
+                    @endforeach
+                </div>
+            @elseif(isset($partner) && $partner->count() > 0)
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 items-center">
+                    @foreach ($partner as $p)
+                    <div class="glass-panel bg-white/[0.03] backdrop-blur-md border border-white/10 p-4 rounded-xl flex items-center justify-center h-24 hover:border-[#486581] hover:bg-white/[0.08] transition-all duration-300 group shadow-lg">
+                        @if($p->foto)
+                            <img src="{{ asset('images/kerjasama/' . $p->foto) }}" alt="{{ $p->instansi }}" class="max-h-12 max-w-[120px] object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+                        @else
+                            <span class="text-xs text-neutral-300 font-light text-center">{{ $p->instansi }}</span>
+                        @endif
+                    </div>
+                    @endforeach
                 </div>
             @endif
         </div>
     </section>
 
 @endsection
-
-@push('scripts')
-    <script>
-        // Counter Animation on Hero Mount
-        document.querySelectorAll('.counter').forEach(el => {
-            const target = parseInt(el.getAttribute('data-target'));
-            if (!target) return;
-            let current = 0;
-            const duration = 1500;
-            const step = Math.ceil(target / (duration / 16));
-            
-            setTimeout(() => {
-                const timer = setInterval(() => {
-                    current += step;
-                    if (current >= target) {
-                        el.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        el.textContent = current;
-                    }
-                }, 16);
-            }, 500);
-        });
-
-        // Sticky Scroll Tracer Journey (Section 02)
-        const faceSection = document.getElementById('face-section');
-        const faceBg = document.getElementById('face-bg');
-        const faceGaugeBar = document.getElementById('face-gauge-bar');
-        const faceProgressNum = document.getElementById('face-progress-num');
-
-        const faceTitle = document.getElementById('face-title');
-        const faceDesc = document.getElementById('face-desc');
-        const faceAlt = document.getElementById('face-alt');
-        const faceSpeed = document.getElementById('face-speed');
-        const faceGradient = document.getElementById('face-gradient');
-        const faceBadge = document.getElementById('face-section-badge');
-        const pills = document.querySelectorAll('.checkpoint-pill');
-
-        const checkpoints = [
-            {
-                badge: 'STAGE 01 / 05',
-                alt: 'PRODI DATA INTEGRATION',
-                title: 'REGISTRASI ALUMNI',
-                desc: 'Mahasiswa yang lulus dari sidang meja hijau mendaftarkan akun alumni secara resmi di portal SIKAK UMI dengan melengkapi berkas Ijazah SMA/SMK/Sederajat, KTP, dan foto formal wisudawan.',
-                speed: '100% VERIFIED',
-                gradient: 'OPEN REGISTRATION'
-            },
-            {
-                badge: 'STAGE 02 / 05',
-                alt: 'FAKULTAS VALIDATION',
-                title: 'VERIFIKASI ADMIN',
-                desc: 'Admin program studi dan fakultas memeriksa keabsahan dokumen akademik alumni untuk memberikan status kelulusan resmi.',
-                speed: 'STATUS APPROVED',
-                gradient: 'ADMIN VERIFIED'
-            },
-            {
-                badge: 'STAGE 03 / 05',
-                alt: 'KEMENRISTEKDIKTI COMPLIANCE',
-                title: 'TRACER STUDY',
-                desc: 'Alumni mengisikan kuesioner penelusuran karir mencakup masa tunggu kerja, tingkat keselarasan prodi, dan rentang pendapatan.',
-                speed: 'STANDARD COMPLIANT',
-                gradient: 'HIGH RESPONSE RATE'
-            },
-            {
-                badge: 'STAGE 04 / 05',
-                alt: 'PUBLIC PORTFOLIO',
-                title: 'JEJAK KARIR ALUMNI',
-                desc: 'Riwayat perjalanan karir alumni dipublikasikan secara transparan untuk memberikan inspirasi kepada mahasiswa aktif.',
-                speed: 'PUBLIC VISIBILITY',
-                gradient: 'VERIFIED PORTFOLIO'
-            },
-            {
-                badge: 'STAGE 05 / 05',
-                alt: 'INDUSTRIAL NETWORK',
-                title: 'MITRA KERJASAMA',
-                desc: 'Perusahaan mitra mengakses data rekrutmen alumni Universitas Methodist Indonesia untuk penempatan tenaga kerja profesional.',
-                speed: 'DIRECT HIRING',
-                gradient: 'ACTIVE COLLABORATION'
-            }
-        ];
-
-        window.addEventListener('scroll', () => {
-            if (!faceSection) return;
-            const rect = faceSection.getBoundingClientRect();
-            const sectionHeight = faceSection.offsetHeight - window.innerHeight;
-            const scrollProgress = Math.max(0, Math.min(1, -rect.top / sectionHeight));
-
-            const pct = Math.round(scrollProgress * 100);
-            if (faceProgressNum) faceProgressNum.textContent = pct + '%';
-            if (faceGaugeBar) faceGaugeBar.style.height = pct + '%';
-
-            let index = Math.min(4, Math.floor(scrollProgress * 5));
-            const cp = checkpoints[index];
-
-            if (faceTitle && faceTitle.textContent !== cp.title) {
-                faceTitle.textContent = cp.title;
-                faceDesc.textContent = cp.desc;
-                faceAlt.textContent = cp.alt;
-                faceSpeed.textContent = cp.speed;
-                faceGradient.textContent = cp.gradient;
-                faceBadge.textContent = cp.badge;
-
-                pills.forEach((p, idx) => {
-                    if (idx === index) {
-                        p.classList.add('border-action', 'text-action', 'bg-action/10');
-                        p.classList.remove('border-line', 'text-snow/50');
-                    } else {
-                        p.classList.remove('border-action', 'text-action', 'bg-action/10');
-                        p.classList.add('border-line', 'text-snow/50');
-                    }
-                });
-            }
-        });
-    </script>
-@endpush

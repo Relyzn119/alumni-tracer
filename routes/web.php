@@ -92,6 +92,9 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
 //public:
 Route::get('/', [LandingPageController::class, 'index'])->name('main');
+Route::get('/sikak', function () {
+    return view('sikak');
+})->name('sikak');
 Route::get('/pencarian', [PencarianController::class, 'index'])->name('pencarian');
 Route::get('/pencarian/data', [PencarianController::class, 'cari'])->name('pencarian-data');
 Route::get('/read/{id}', [viewberitaController::class, 'tampil_berita'])->name('view-berita');
