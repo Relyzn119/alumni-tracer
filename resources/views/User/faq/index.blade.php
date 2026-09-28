@@ -102,7 +102,7 @@
                                         terlihat jelas, tanpa aksesori yang menutupi wajah, dan ukuran maksimal 1MB.</li>
                                     <li><strong>KTP</strong>: Foto KTP harus jelas dan terbaca, dalam format <strong>JPG,
                                             JPEG, PNG, atau PDF</strong>, dengan ukuran maksimal 1MB.</li>
-                                    <li><strong>Ijazah</strong>: Pastikan hasil foto atau scan ijazah jelas dan informasi
+                                    <li><strong>Ijazah</strong>: Yang diunggah adalah <strong>Ijazah SMA / SMK / Sederajat (BUKAN Ijazah S1)</strong>. Pastikan hasil foto atau scan ijazah jelas dan informasi
                                         dapat terbaca. Format file harus <strong>JPG, JPEG, PNG, atau PDF</strong>, dan
                                         ukuran maksimal 1MB.</li>
                                 </ol>

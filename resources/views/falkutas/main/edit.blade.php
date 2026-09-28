@@ -159,9 +159,12 @@
                                         style="display:none; width: 200px; height: auto;">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="ijazah" class="form-label">Ijazah</label>
+                                    <label for="ijazah" class="form-label">Ijazah Terakhir (SMA / SMK / Sederajat)</label>
                                     <input type="file" class="form-control" id="ijazah" accept="image/*"
                                         name="ijazah">
+                                    <small class="text-danger d-block mt-1">
+                                        <i class="bi bi-info-circle"></i> Catatan: Ijazah yang diunggah adalah <strong>Ijazah SMA / SMK / Sederajat</strong> (BUKAN Ijazah S1).
+                                    </small>
                                     <img id="ijazah-preview" src="" class="rounded mt-2" alt="Ijazah Preview"
                                         style="display:none; width: 200px; height: auto;">
                                 </div>

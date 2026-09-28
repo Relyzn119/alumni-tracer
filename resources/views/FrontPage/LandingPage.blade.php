@@ -114,7 +114,7 @@
                         REGISTRASI ALUMNI
                     </h3>
                     <p id="face-desc" class="text-sm sm:text-base text-snow/80 leading-relaxed font-archivo mb-6">
-                        Mahasiswa yang lulus dari sidang meja hijau mendaftarkan akun alumni secara resmi di portal SIKAK UMI dengan melengkapi berkas Ijazah, KTP, dan foto formal wisudawan.
+                        Mahasiswa yang lulus dari sidang meja hijau mendaftarkan akun alumni secara resmi di portal SIKAK UMI dengan melengkapi berkas Ijazah SMA/SMK/Sederajat, KTP, dan foto formal wisudawan.
                     </p>
                     <div class="grid grid-cols-2 gap-4 pt-4 border-t border-line font-mono text-xs">
                         <div>REQ ACCURACY: <span id="face-speed" class="text-action tnum font-bold">100% VERIFIED</span></div>
@@ -384,7 +384,7 @@
                 badge: 'STAGE 01 / 05',
                 alt: 'PRODI DATA INTEGRATION',
                 title: 'REGISTRASI ALUMNI',
-                desc: 'Mahasiswa yang lulus dari sidang meja hijau mendaftarkan akun alumni secara resmi di portal SIKAK UMI dengan melengkapi berkas Ijazah, KTP, dan foto formal wisudawan.',
+                desc: 'Mahasiswa yang lulus dari sidang meja hijau mendaftarkan akun alumni secara resmi di portal SIKAK UMI dengan melengkapi berkas Ijazah SMA/SMK/Sederajat, KTP, dan foto formal wisudawan.',
                 speed: '100% VERIFIED',
                 gradient: 'OPEN REGISTRATION'
             },
