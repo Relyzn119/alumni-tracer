@@ -295,22 +295,22 @@
                     <div class="glass-panel bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden group hover:border-[#486581] hover:bg-white/[0.07] transition-all duration-300 flex flex-col justify-between shadow-2xl io">
                         <div>
                             <div class="relative h-56 w-full overflow-hidden bg-transparent">
-                                <img src="{{ asset('images/berita/' . ($item->gambar ?? 'default.jpg')) }}" 
+                                <img src="{{ asset('images/berita/' . ($item->file ?? 'default.jpg')) }}" 
                                      alt="{{ $item->judul }}" 
                                      class="w-full h-full object-cover group-hover:scale-105 duration-700 transition-transform">
                                 <span class="absolute top-4 left-4 bg-[#243B53]/80 border border-[#486581] backdrop-blur-md px-3 py-1 rounded-full text-[11px] text-white font-medium uppercase tracking-wider">
-                                    {{ $item->kategori->kategori ?? 'Akademik' }}
+                                    {{ $item->kategori->nama ?? 'Akademik' }}
                                 </span>
                             </div>
                             <div class="p-6">
                                 <div class="text-xs text-neutral-400 mb-2">
-                                    {{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y') }}
+                                    {{ \Carbon\Carbon::parse($item->tanggal ?? $item->created_at)->translatedFormat('d F Y') }}
                                 </div>
                                 <h3 class="text-lg font-medium text-white group-hover:text-[#829AB1] transition-colors line-clamp-2 leading-snug mb-3">
                                     {{ $item->judul }}
                                 </h3>
                                 <p class="text-xs text-neutral-300 font-light line-clamp-3 leading-relaxed">
-                                    {!! Str::limit(strip_tags($item->deskripsi), 120) !!}
+                                    {!! Str::limit(strip_tags($item->konten ?? $item->deskripsi ?? ''), 120) !!}
                                 </p>
                             </div>
                         </div>

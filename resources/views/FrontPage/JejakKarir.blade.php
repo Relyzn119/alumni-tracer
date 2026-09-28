@@ -53,11 +53,11 @@
             @endphp
             <div class="bg-surface border border-line overflow-hidden hover:border-action transition-all group flex flex-col justify-between">
                 <div>
-                    <div class="relative h-56 w-full overflow-hidden bg-ground">
+                    <div class="relative aspect-[3/4] w-full overflow-hidden bg-ground">
                         <img src="{{ asset('images/alumni/' . ($item->file ?? 'default.png')) }}" 
                              alt="{{ $item->nama }}" 
-                             class="w-full h-full object-cover plate-filter group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute top-3 right-3 px-2.5 py-1 bg-action/20 text-action font-mono text-[10px] border border-action/30 uppercase tnum">
+                             class="w-full h-full object-cover object-top plate-filter group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 px-2.5 py-1 bg-[#080805]/80 backdrop-blur-md text-[#829AB1] font-mono text-[10px] border border-white/20 uppercase tnum shadow-lg">
                             VERIFIED TRACER
                         </span>
                     </div>
