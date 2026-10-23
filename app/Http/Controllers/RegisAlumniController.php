@@ -135,6 +135,12 @@ class RegisAlumniController extends Controller
             "kecamatan" => $request->kecamatan,
             "kelurahan" => $request->kelurahan,
             "gender" => $request->gender,
+            "periode_wisuda" => $request->periode_wisuda,
+            "tahun_wisuda" => $request->tahun_wisuda,
+            "no_hp" => $request->no_hp,
+            "facebook" => $request->facebook,
+            "instagram" => $request->instagram,
+            "tiktok" => $request->tiktok,
         ]);
         // Handle file upload for 'file'
         if ($request->hasFile('file')) {
@@ -221,6 +227,12 @@ class RegisAlumniController extends Controller
             'kecamatan',
             'kelurahan',
             'gender',
+            'periode_wisuda',
+            'tahun_wisuda',
+            'no_hp',
+            'facebook',
+            'instagram',
+            'tiktok',
         ]);
         if ($request->filled('yudisium')) {
             $updateData['thn_lulus'] = \Carbon\Carbon::parse($request->yudisium)->format('Y');

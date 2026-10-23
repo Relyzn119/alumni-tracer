@@ -217,6 +217,36 @@
                                     <input type="text" class="form-control" id="judul" name="judul">
                                 </div>
                                 <div class="mb-3">
+                                    <label for="periode_wisuda" class="form-label">Periode Wisuda</label>
+                                    <select name="periode_wisuda" id="periode_wisuda" class="form-select">
+                                        <option value="">Pilih Periode</option>
+                                        <option value="Periode I">Periode I</option>
+                                        <option value="Periode II">Periode II</option>
+                                        <option value="Periode III">Periode III</option>
+                                        <option value="Periode IV">Periode IV</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tahun_wisuda" class="form-label">Tahun Wisuda</label>
+                                    <input type="number" class="form-control" id="tahun_wisuda" name="tahun_wisuda" placeholder="Contoh: 2024">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="no_hp" class="form-label">No HP / WA</label>
+                                    <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Contoh: 08123456789">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="facebook" class="form-label">Facebook <small class="text-muted">(Opsional)</small></label>
+                                    <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Username atau link profil">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="instagram" class="form-label">Instagram <small class="text-muted">(Opsional)</small></label>
+                                    <input type="text" class="form-control" id="instagram" name="instagram" placeholder="@username">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tiktok" class="form-label">Tiktok <small class="text-muted">(Opsional)</small></label>
+                                    <input type="text" class="form-control" id="tiktok" name="tiktok" placeholder="@username">
+                                </div>
+                                <div class="mb-3">
                                     <label for="image-input" class="form-label">Foto Alumni</label>
                                     <input type="file" class="form-control" id="image-input" accept="image/*"
                                         name="file">

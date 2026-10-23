@@ -82,7 +82,7 @@
                                         <div class="modal-body">
                                             <div class="mb-3">
                                                 <label for="fakultas" class="form-label">Fakultas</label>
-                                                <select name="fakultas" id="fakultas" class="form-select">
+                                                <select name="fakultas" id="fakultas" class="form-select" required>
                                                     <option value="">Pilih Fakultas</option>
                                                     <option value="Fakultas Ilmu Komputer">Fakultas Ilmu Komputer</option>
                                                     <option value="Fakultas Kedokteran">Fakultas Kedokteran</option>
@@ -92,9 +92,19 @@
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="">Tahun Wisuda</label>
-                                                <input type="number" class="form-control" name="tahun"
-                                                    placeholder="Masukkan Tahun">
+                                                <label for="periode_wisuda" class="form-label">Periode Wisuda</label>
+                                                <select name="periode_wisuda" id="periode_wisuda" class="form-select">
+                                                    <option value="">Semua Periode</option>
+                                                    <option value="Periode I">Periode I</option>
+                                                    <option value="Periode II">Periode II</option>
+                                                    <option value="Periode III">Periode III</option>
+                                                    <option value="Periode IV">Periode IV</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="tahun" class="form-label">Tahun Wisuda</label>
+                                                <input type="number" class="form-control" id="tahun" name="tahun"
+                                                    placeholder="Masukkan Tahun" required>
                                             </div>
                                         </div>
                                         <div class="modal-footer">

@@ -272,6 +272,43 @@
                                         value="{{ isset($alumni->judul) ? $alumni->judul : '' }}">
                                 </div>
                                 <div class="mb-3">
+                                    <label for="periode_wisuda" class="form-label">Periode Wisuda</label>
+                                    <select name="periode_wisuda" id="periode_wisuda" class="form-select">
+                                        <option value="">Pilih Periode</option>
+                                        @foreach (['Periode I', 'Periode II', 'Periode III', 'Periode IV'] as $option)
+                                            <option value="{{ $option }}"
+                                                {{ isset($alumni->periode_wisuda) && $alumni->periode_wisuda == $option ? 'selected' : '' }}>
+                                                {{ $option }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tahun_wisuda" class="form-label">Tahun Wisuda</label>
+                                    <input type="number" class="form-control" id="tahun_wisuda" name="tahun_wisuda"
+                                        value="{{ isset($alumni->tahun_wisuda) ? $alumni->tahun_wisuda : '' }}" placeholder="Contoh: 2024">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="no_hp" class="form-label">No HP / WA</label>
+                                    <input type="text" class="form-control" id="no_hp" name="no_hp"
+                                        value="{{ isset($alumni->no_hp) ? $alumni->no_hp : '' }}" placeholder="Contoh: 08123456789">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="facebook" class="form-label">Facebook <small class="text-muted">(Opsional)</small></label>
+                                    <input type="text" class="form-control" id="facebook" name="facebook"
+                                        value="{{ isset($alumni->facebook) ? $alumni->facebook : '' }}" placeholder="Username atau link profil">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="instagram" class="form-label">Instagram <small class="text-muted">(Opsional)</small></label>
+                                    <input type="text" class="form-control" id="instagram" name="instagram"
+                                        value="{{ isset($alumni->instagram) ? $alumni->instagram : '' }}" placeholder="@username">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tiktok" class="form-label">Tiktok <small class="text-muted">(Opsional)</small></label>
+                                    <input type="text" class="form-control" id="tiktok" name="tiktok"
+                                        value="{{ isset($alumni->tiktok) ? $alumni->tiktok : '' }}" placeholder="@username">
+                                </div>
+                                <div class="mb-3">
                                     <label for="file" class="form-label">Foto Alumni <span class="text-danger ms-1">(
                                             Nama Foto : NIM-Nama )</span> </label>
                                     <input type="file" class="form-control" id="image-input" accept="image/*"
