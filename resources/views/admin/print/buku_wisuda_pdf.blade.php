@@ -189,9 +189,15 @@
     </div>
 
     @if ($alumni->isEmpty())
+        @php
+            $rawFakultasEmpty = $fakultas ?: 'METHODIST';
+            $displayFakultasEmpty = preg_match('/^fakultas\b/i', trim($rawFakultasEmpty))
+                ? trim($rawFakultasEmpty)
+                : 'FAKULTAS ' . trim($rawFakultasEmpty);
+        @endphp
         <div class="page-container">
             <div class="header-title">
-                FAKULTAS {{ strtoupper($fakultas ?: 'METHODIST') }}
+                {{ strtoupper($displayFakultasEmpty) }}
             </div>
             <div class="empty-message">
                 <p>Tidak ada data wisudawan untuk kriteria yang dipilih.</p>
@@ -208,12 +214,23 @@
         @foreach ($prodiGroups as $prodiName => $items)
             @php
                 $chunks = $items->chunk(4);
+
+                $rawProdi = $prodiName ?: 'UMUM';
+                $displayProdi = preg_match('/^(prodi|program studi)\b/i', trim($rawProdi))
+                    ? trim($rawProdi)
+                    : 'PRODI ' . trim($rawProdi);
             @endphp
 
             @foreach ($chunks as $chunk)
+                @php
+                    $rawFakultas = $fakultas ?: ($chunk->first()->fakultas ?? 'METHODIST');
+                    $displayFakultas = preg_match('/^fakultas\b/i', trim($rawFakultas))
+                        ? trim($rawFakultas)
+                        : 'FAKULTAS ' . trim($rawFakultas);
+                @endphp
                 <div class="page-container">
                     <div class="header-title">
-                        FAKULTAS {{ strtoupper($fakultas ?: ($chunk->first()->fakultas ?? 'METHODIST')) }}, PRODI {{ strtoupper($prodiName) }}
+                        {{ strtoupper($displayFakultas) }}, {{ strtoupper($displayProdi) }}
                     </div>
 
                     @foreach ($chunk as $item)
