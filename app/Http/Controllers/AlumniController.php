@@ -87,11 +87,17 @@ class AlumniController extends Controller
             "tiktok" => "nullable",
         ], [
             'npm.unique' => 'NPM sudah digunakan',
-            'file.mimes' => 'Format file foto harus jpg,jpeg,png',
-            'ktp.mimes' => 'Format file KTP harus jpg,jpeg,png',
-            'ijazah.mimes' => 'Format file Ijazah harus jpg,jpeg,png',
-            'penguji1.required' => 'Nama penguji 1 harus diisi', // Custom error message for penguji1
-            'penguji2.required' => 'Nama penguji 2 harus diisi', // Custom error message for penguji2
+            'file.mimes' => 'Format file foto harus jpg, jpeg, png',
+            'file.max' => 'Ukuran file foto maksimal 2 MB',
+            'file.uploaded' => 'File foto gagal diunggah. Pastikan ukuran file maksimal 2 MB dan koneksi stabil',
+            'ktp.mimes' => 'Format file KTP harus jpg, jpeg, png',
+            'ktp.max' => 'Ukuran file KTP maksimal 2 MB',
+            'ktp.uploaded' => 'File KTP gagal diunggah. Pastikan ukuran file maksimal 2 MB dan koneksi stabil',
+            'ijazah.mimes' => 'Format file Ijazah harus jpg, jpeg, png',
+            'ijazah.max' => 'Ukuran file Ijazah maksimal 2 MB',
+            'ijazah.uploaded' => 'File Ijazah gagal diunggah. Pastikan ukuran file maksimal 2 MB dan koneksi stabil',
+            'penguji1.required' => 'Nama penguji 1 harus diisi',
+            'penguji2.required' => 'Nama penguji 2 harus diisi',
         ]);
 
         // Create new Alumni record

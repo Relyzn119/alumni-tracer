@@ -44,6 +44,17 @@ class RegisAlumniController extends Controller
      */
     public function store(Request $request)
     {
+        $userNpm = auth()->user()->npm ?? $request->npm;
+        $existing = Alumni::where('npm', $userNpm)->first();
+
+        if ($existing) {
+            if ($existing->status == 1) {
+                return redirect()->back()->with('toast_error', 'Tidak bisa upload file/gambar lagi karena registrasi data alumni sudah disetujui oleh admin, silakan hubungi admin untuk membukanya kembali.');
+            } else {
+                return $this->update($request, $existing->id);
+            }
+        }
+
         $this->validate($request, rules: [
             "npm" => "required|unique:alumnis",
             "nama" => "required",
@@ -88,14 +99,17 @@ class RegisAlumniController extends Controller
             'file.required' => 'Foto alumni wajib diunggah.',
             'file.mimes' => 'Format foto alumni harus jpg, jpeg, atau png.',
             'file.max' => 'Ukuran foto alumni maksimal 2 MB.',
+            'file.uploaded' => 'Foto alumni gagal diunggah. Pastikan ukuran file maksimal 2 MB dan koneksi internet stabil.',
 
             'ktp.required' => 'Foto KTP wajib diunggah.',
             'ktp.mimes' => 'Format foto KTP harus jpg, jpeg, atau png.',
             'ktp.max' => 'Ukuran foto KTP maksimal 2 MB.',
+            'ktp.uploaded' => 'Foto KTP gagal diunggah. Pastikan ukuran file maksimal 2 MB dan koneksi internet stabil.',
 
             'ijazah.required' => 'Foto ijazah wajib diunggah.',
             'ijazah.mimes' => 'Format foto ijazah harus jpg, jpeg, atau png.',
             'ijazah.max' => 'Ukuran foto ijazah maksimal 2 MB.',
+            'ijazah.uploaded' => 'Foto ijazah gagal diunggah. Pastikan ukuran file maksimal 2 MB dan koneksi internet stabil.',
 
             'penguji1.required' => 'Dosen penguji 1 wajib dipilih.',
             'penguji2.required' => 'Dosen penguji 2 wajib dipilih.',
@@ -199,6 +213,26 @@ class RegisAlumniController extends Controller
     public function update(Request $request, $id)
     {
         $data = Alumni::findOrFail($id);
+
+        if ($data->status == 1) {
+            return redirect()->back()->with('toast_error', 'Tidak bisa upload file/gambar lagi karena registrasi data alumni sudah disetujui oleh admin, silakan hubungi admin untuk membukanya kembali.');
+        }
+
+        $this->validate($request, [
+            'file' => 'nullable|mimes:jpg,jpeg,png|max:2048',
+            'ktp' => 'nullable|mimes:jpg,jpeg,png|max:2048',
+            'ijazah' => 'nullable|mimes:jpg,jpeg,png|max:2048',
+        ], [
+            'file.mimes' => 'Format foto alumni harus berupa JPG, JPEG, atau PNG.',
+            'file.max' => 'Ukuran foto alumni maksimal 2 MB.',
+            'file.uploaded' => 'Foto alumni gagal diunggah. Pastikan ukuran file maksimal 2 MB dan koneksi internet stabil.',
+            'ktp.mimes' => 'Format foto KTP harus berupa JPG, JPEG, atau PNG.',
+            'ktp.max' => 'Ukuran foto KTP maksimal 2 MB.',
+            'ktp.uploaded' => 'Foto KTP gagal diunggah. Pastikan ukuran file maksimal 2 MB dan koneksi internet stabil.',
+            'ijazah.mimes' => 'Format foto ijazah harus berupa JPG, JPEG, atau PNG.',
+            'ijazah.max' => 'Ukuran foto ijazah maksimal 2 MB.',
+            'ijazah.uploaded' => 'Foto ijazah gagal diunggah. Pastikan ukuran file maksimal 2 MB dan koneksi internet stabil.',
+        ]);
 
         // Simpan data yang akan diupdate ke dalam array
         $updateData = $request->only([

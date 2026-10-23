@@ -13,10 +13,12 @@
         </div>
     </div>
     <div class="container-xl min-vh-100">
-        @if ($alumni->status ?? null == 1)
-            <div class="alert alert-primary d-flex align-items-center" role="alert">
+        @if (isset($alumni) && $alumni->status == 1)
+            <div class="alert alert-warning d-flex align-items-center mb-3 shadow-sm" role="alert">
+                <i class="fa-solid fa-triangle-exclamation me-3 fs-2 text-warning"></i>
                 <div>
-                    Data Anda telah disetujui oleh admin, sehingga Anda tidak dapat mengubahnya lagi.
+                    <h4 class="alert-title mb-1">Registrasi Data Alumni Telah Disetujui</h4>
+                    <div class="text-secondary">Tidak bisa upload file/gambar lagi karena registrasi data alumni sudah disetujui oleh admin, silakan hubungi admin untuk membukanya kembali.</div>
                 </div>
             </div>
         @endif
@@ -31,6 +33,7 @@
                         @if (isset($alumni))
                             @method('put')
                         @endif
+                        <fieldset {{ isset($alumni) && $alumni->status == 1 ? 'disabled' : '' }}>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
@@ -329,9 +332,17 @@
                             </div>
 
                         </div>
+                        </fieldset>
                         <div class="mt-3">
-                            <button class="btn btn-primary" {{ $alumni->status ?? null == 1 ? 'disabled hidden' : '' }}
-                                type="submit">Simpan</button>
+                            @if (isset($alumni) && $alumni->status == 1)
+                                <button class="btn btn-secondary" type="button" disabled>
+                                    <i class="fa-solid fa-lock me-2"></i>Data Telah Disetujui (Terkunci)
+                                </button>
+                            @else
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa-solid fa-save me-2"></i>Simpan
+                                </button>
+                            @endif
                         </div>
                     </form>
 
