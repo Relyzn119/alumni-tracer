@@ -79,6 +79,12 @@ class AlumniController extends Controller
             "kota" => "required",
             "kecamatan" => "required",
             "kelurahan" => "required",
+            "periode_wisuda" => "nullable",
+            "tahun_wisuda" => "nullable",
+            "no_hp" => "nullable",
+            "facebook" => "nullable",
+            "instagram" => "nullable",
+            "tiktok" => "nullable",
         ], [
             'npm.unique' => 'NPM sudah digunakan',
             'file.mimes' => 'Format file foto harus jpg,jpeg,png',
@@ -118,6 +124,12 @@ class AlumniController extends Controller
             "kecamatan" => $request->kecamatan,
             "kelurahan" => $request->kelurahan,
             "gender" => $request->gender,
+            "periode_wisuda" => $request->periode_wisuda,
+            "tahun_wisuda" => $request->tahun_wisuda,
+            "no_hp" => $request->no_hp,
+            "facebook" => $request->facebook,
+            "instagram" => $request->instagram,
+            "tiktok" => $request->tiktok,
         ]);
 
         // Handle file upload for 'file'
@@ -189,6 +201,7 @@ class AlumniController extends Controller
             'thn_lulus', 'sempro', 'semhas', 'mejahijau',
             'yudisium', 'fakultas', 'judul', 'no_alumni', 'ipk', 'tanggal_lhr', 'tempat_lhr',
             'ayah', 'ibu', 'penguji1', 'penguji2', 'pembimbing1', 'pembimbing2', 'nik', 'provinsi', 'kota', 'kecamatan', 'kelurahan', 'gender',
+            'periode_wisuda', 'tahun_wisuda', 'no_hp', 'facebook', 'instagram', 'tiktok',
         ]);
 
         // Cek apakah file baru diupload

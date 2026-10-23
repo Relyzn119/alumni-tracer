@@ -86,6 +86,12 @@ class FalkutasActionController extends Controller
             "penguji2" => "required",
             "pembimbing1" => "required",
             "pembimbing2" => "required",
+            "periode_wisuda" => "nullable",
+            "tahun_wisuda" => "nullable",
+            "no_hp" => "nullable",
+            "facebook" => "nullable",
+            "instagram" => "nullable",
+            "tiktok" => "nullable",
         ], messages: [
             'npm.unique' => 'NPM sudah digunakan',
             'file.mimes' => 'Format file foto harus jpg,jpeg,png',
@@ -123,7 +129,12 @@ class FalkutasActionController extends Controller
             "pembimbing1" => $request->pembimbing1,
             "pembimbing2" => $request->pembimbing2,
             "gender" => $request->gender,
-
+            "periode_wisuda" => $request->periode_wisuda,
+            "tahun_wisuda" => $request->tahun_wisuda,
+            "no_hp" => $request->no_hp,
+            "facebook" => $request->facebook,
+            "instagram" => $request->instagram,
+            "tiktok" => $request->tiktok,
         ]);
         // Handle file upload for 'file'
         if ($request->hasFile('file')) {
@@ -145,8 +156,8 @@ class FalkutasActionController extends Controller
             $request->file('ijazah')->move('images/ijazah/', $ijazahFileName);
             $data->ijazah = $ijazahFileName;
         }
-        $data->save();
 
+        $data->save();
         return redirect()->route('falkutas.index')->with('toast_success', 'Data Berhasil Ditambahkan');
     }
 
@@ -192,6 +203,7 @@ class FalkutasActionController extends Controller
             'thn_lulus', 'sempro', 'semhas', 'mejahijau',
             'yudisium', 'judul', 'pekerjaan', 'no_alumni', 'ipk', 'tanggal_lhr', 'tempat_lhr',
             'ayah', 'ibu', 'alamat', 'penguji1', 'penguji2', 'pembimbing1', 'pembimbing2', 'nik', 'provinsi', 'kota', 'kecamatan', 'kelurahan', 'gender',
+            'periode_wisuda', 'tahun_wisuda', 'no_hp', 'facebook', 'instagram', 'tiktok',
         ]);
 
         // Cek apakah file baru diupload
