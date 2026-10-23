@@ -54,6 +54,12 @@ class AlumniImport implements ToCollection, WithHeadingRow
                     'yudisium' => $yudisium,
                     'thn_lulus' => $row['thn_lulus'],
                     'judul' => $row['judul'],
+                    'periode_wisuda' => $row['periode_wisuda'] ?? null,
+                    'tahun_wisuda' => $row['tahun_wisuda'] ?? null,
+                    'no_hp' => $row['no_hp'] ?? null,
+                    'facebook' => $row['facebook'] ?? null,
+                    'instagram' => $row['instagram'] ?? null,
+                    'tiktok' => $row['tiktok'] ?? null,
                 ]);
             } else {
                 Log::warning('Peminatan atau Prodi tidak ditemukan:', [

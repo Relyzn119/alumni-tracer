@@ -324,6 +324,22 @@
                                                                         <th>Kelurahan</th>
                                                                         <td>{{ $item->kelurahan }}</td>
                                                                     </tr>
+                                                                    <tr>
+                                                                        <th>No HP / WA</th>
+                                                                        <td>{{ $item->no_hp ?? '-' }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Facebook</th>
+                                                                        <td>{{ $item->facebook ?? '-' }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Instagram</th>
+                                                                        <td>{{ $item->instagram ?? '-' }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Tiktok</th>
+                                                                        <td>{{ $item->tiktok ?? '-' }}</td>
+                                                                    </tr>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -377,6 +393,14 @@
                                                                 <th>Yudisium</th>
                                                                 <td>{{ $item->yudisium ? \Carbon\Carbon::parse($item->yudisium)->translatedFormat('d F Y') : '-' }}
                                                                 </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Periode Wisuda</th>
+                                                                <td>{{ $item->periode_wisuda ?? '-' }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Tahun Wisuda</th>
+                                                                <td>{{ $item->tahun_wisuda ?? '-' }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Judul Skripsi</th>
